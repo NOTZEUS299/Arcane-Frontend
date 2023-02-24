@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400&display=swap');
+
+#favourite-page {
+    background: rgb(50, 50, 50);
+}
+
+.container-when-no-items-in-fav {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-when-no-items-in-fav h1 {
+    color: #353535;
+    font-size: 2.5rem;
+    position: relative;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.no-favs-icons {
+    position: absolute;
+    top: 0.2rem;
+}
+
+.favourite-page-main-container {
+    width: 100%;
+    background: #e0e0e0;
+    padding: 1%;
+    padding-top: 0.5%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 420.27px);
+    grid-gap: 30px;
+}
+
+.favourite-page-gridded-div {
+    transition: all 0.3s;
+    width: initial;
+}
+
+.favourite-list-content-div {
+    background: #fff;
+    height: 45vh;
+    margin: 20px auto;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 18px 18px 36px #5a5a5a,
+        -18px -18px 36px #ffffff;
+    overflow: hidden;
+}
+
+.innerPage-image-container {
+    width: 40%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.innerPage-content-container {
+    width: 60%;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 15%;
+    color: #5a5a5a;
+}
+
+.innerPage-content-container h3 {
+    position: absolute;
+    bottom: 20%;
+    right: 25%;
+}
+
+.rupeeSign {
+    font-size: 0.99rem;
+}
+
+.innerPage-content-container button {
+    background: rgb(70, 70, 70);
+    margin-top: 1rem;
+    padding: 0.5rem 0.5rem;
+    width: 100%;
+    color: white;
+    border: 3px solid white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.innerPage-content-container button:hover {
+    border-color: #5a5a5a;
+    background: transparent;
+    color: #5a5a5a;
+}
+
+.remove-fav-card-favPage {
+    position: absolute;
+    top: 5%;
+    right: 10%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.heart-container-one-favPage {
+    /* color: rgb(50, 50, 50); */
+    width: 0.5rem;
+    font-size: 1rem;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.heart-container-two-favPage {
+    /* color: rgb(50, 50, 50); */
+    font-size: 1rem;
+    width: 0.5rem;
+    overflow: hidden;
+    transform: rotateY(180deg);
+    transition: all 0.3s;
+}
+
+.favPage-actual-content {
+    width: 0;
+    overflow: hidden;
+    transition: all 0.3s;
+    color: rgb(50, 50, 50);
+}
+
+.favPage-actual-content:hover::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    height: 1px;
+    background: rgb(70, 70, 70);
+    animation: widthEntry 0.3s ease-in-out 1 forwards;
+}
+
+.favPage-actual-content:hover::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    height: 1px;
+    background: rgb(70, 70, 70);
+    animation: widthEntry 0.3s ease-in-out 1 forwards;
+}
+
+.remove-fav-card-favPage:hover .favPage-actual-content {
+    animation: widthEntry 0.3s ease-in-out 1 forwards;
+}
+
+.product-image-container-favPage {
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px);
+}
+
+.img-container-favPage {
+    width: 100%;
+    height: 70%;
+    position: absolute;
+    top: 15%;
+    left: 25%;
+    overflow: hidden;
+    border: 5px solid white;
+    border-radius: 5px;
+}
+
+.img-container-favPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+}
+
+.product-image-container-favPage img {
+    width: 100%;
+}
+
+.signIn-required {
+    width: 50%;
+    height: 60vh;
+    border-radius: 10px;
+    background: #e0e0e0;
+    box-shadow: 20px 20px 40px #5a5a5a,
+        -20px -20px 40px #ffffff;
+}
+
+/* ///////////////////////////////////Animation///////////////////////////////////// */
+
+@keyframes widthEntry {
+    0% {
+        width: 0;
+        right: 50%;
+    }
+
+    100% {
+        width: 85%;
+        right: 7.5%;
+    }
+}

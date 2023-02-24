@@ -1,0 +1,328 @@
+.fake-div-for-space {
+    width: 100%;
+    height: 17vh;
+    background-color: #e0e0e0;
+}
+
+.men-outfit-page-bg-container {
+    width: 100%;
+    height: 100vh;
+    background-color: #e0e0e0;
+    position: fixed;
+    top: 0;
+    z-index: -1;
+}
+
+.mens-outfit-page-main-container {
+    width: 100%;
+    position: relative;
+    z-index: 0;
+    margin-top: 35px;
+}
+
+.mens-outfit-product-cards-container {
+    width: 95%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    row-gap: 40px;
+}
+
+.mens-outfit-product-card {
+    width: 100%;
+    height: 350px;
+    border-radius: 10px;
+    background-color: rgba(20, 20, 20, 0.323);
+    box-shadow: 18px 18px 25px #5a5a5a,
+        -18px -18px 25px #ffffff;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    transition: all 0.4s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.mens-outfit-product-card img {
+    width: 60%;
+    position: absolute;
+    top: 5%;
+    z-index: 0;
+}
+
+.mens-card-content {
+    position: absolute;
+    z-index: 1;
+    bottom: -40%;
+    width: 100%;
+    height: 40%;
+    background-color: rgba(20, 20, 20, 0.323);
+    backdrop-filter: blur(1px);
+    transition: all 0.3s;
+    animation: slideUp 0.3s ease-in-out 1 forwards;
+    line-height: 1.1rem;
+    border-radius: 0px 0px 10px 10px;
+    box-shadow: 18px 18px 25px #5a5a5a,
+        -18px 0px 25px #ffffff41;
+    padding: 2px 0 0;
+}
+
+.mens-card-content h4 {
+    color: white;
+    width: 75%;
+    padding-left: 1.5%;
+}
+
+.mens-card-content h5 {
+    color: white;
+    padding-left: 1.5%;
+}
+
+.mens-outfit-product-card:hover {
+    transform: scale(105%);
+}
+
+.mens-card-content p {
+    position: absolute;
+    z-index: 1;
+    top: 2%;
+    right: 3%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: white;
+    animation: swipeIn 0.3s ease-in-out 1 forwards;
+}
+
+#add-to-cart-button {
+    top: 2.3rem;
+}
+
+.mens-card-content .content-buttons {
+    position: absolute;
+    bottom: 5%;
+    left: 2.5%;
+    width: 95%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.content-buttons button {
+    padding: 0.3rem 0.7rem;
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+    font-size: 1rem;
+    border-radius: 5px;
+    width: initial;
+    cursor: pointer;
+}
+
+#buyNow-button:hover::after {
+    content: "";
+    width: 38%;
+    height: 1px;
+    background-color: #fff;
+    position: absolute;
+    left: 2.9%;
+    bottom: 5%;
+    animation: widthZeroB 0.3s ease-in-out 1 forwards;
+}
+
+#viewProduct-button:hover::after {
+    content: "";
+    width: 51%;
+    height: 1px;
+    background-color: #fff;
+    position: absolute;
+    right: 2.9%;
+    bottom: 5%;
+    animation: widthZeroV 0.3s ease-in-out 1 forwards;
+}
+
+#buyNow-button:active::after,
+#viewProduct-button:active::after {
+    height: 0;
+}
+
+.add-to-cart-pop-up {
+    transition: all ease-in-out 0.4s;
+    width: 20%;
+    height: 200px;
+    background-color: #fff;
+    position: fixed;
+    z-index: 1;
+    top: 18%;
+    right: -25%;
+    box-shadow: 0px 0px 40px black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: slideLeft 0.3s ease-in-out 1 forwards;
+}
+
+#add-to-cart-pop-up-close {
+    animation: slideRight 0.3s ease-in-out 1 forwards;
+}
+
+.add-to-cart-pop-up>div {
+    width: 50%;
+    height: 100%;
+    padding: 1%;
+}
+
+.add-to-cart-product-image {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-to-cart-product-image img {
+    width: 80%;
+}
+
+.flex-content-add-to-cart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.add-to-cart-name {
+    width: 100%;
+    height: 55%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #353535;
+}
+
+.input-quantity-div {
+    width: 90%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#add-to-cart-quantity {
+    text-align: center;
+    width: 40%;
+    font-size: 1.5rem;
+    color: #5a5a5a;
+    font-weight: 600;
+}
+
+
+#add-to-cart-quantity::-webkit-inner-spin-button {
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.plus-minus-button {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #5a5a5a;
+}
+
+.add-to-cart-buttons {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.add-to-cart-close-button {
+    position: absolute;
+    width: 10%;
+    height: 20%;
+    top: 0;
+    left: 0;
+    font-size: 1.2rem;
+    color: #5a5a5a;
+    background: #fff;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-to-cart-buttons button {
+    padding: 0.2rem 0.5rem;
+    border: 3px solid #5a5a5a;
+    background: transparent;
+    color: white;
+    border-radius: 2px;
+    font-weight: 700;
+    filter: drop-shadow(4px 4px 1px silver);
+    transition: all 0.2s;
+    background: #5a5a5a;
+}
+
+.add-to-cart-buttons button:hover {
+    border-color: white;
+    border-width: 2px;
+    outline: 2px solid #5a5a5a;
+    cursor: pointer;
+}
+
+.add-to-cart-buttons button:active {
+    border: 0;
+}
+
+/* ///////////////////////////////////////////////Animations////////////////////////////////////// */
+
+@keyframes slideUp {
+    100% {
+        bottom: 0;
+    }
+}
+
+@keyframes swipeIn {
+    0% {
+        height: 0;
+    }
+}
+
+@keyframes widthZeroB {
+    0% {
+        bottom: 0;
+        width: 0;
+        left: 20.5%;
+    }
+}
+
+@keyframes widthZeroV {
+    0% {
+        bottom: 0;
+        width: 0;
+        right: 27.5%;
+    }
+}
+
+@keyframes slideLeft {
+    100% {
+        right: 1%;
+    }
+}
+
+@keyframes slideRight {
+    0% {
+        right: 0;
+    }
+
+    100% {
+        right: -25%;
+    }
+}

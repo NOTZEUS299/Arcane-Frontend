@@ -1,0 +1,53 @@
+.address-field-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.address-field-tab {
+    width: 45%;
+    height: 70%;
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    position: relative;
+    animation: addressFieldEntrance 0.5s ease-in-out 1 forwards;
+    z-index: 5;
+}
+
+.address-field-close-btn {
+    width: 1.3rem;
+    height: 1.3rem;
+    border: 0.2rem solid rgba(255, 255, 255, 0.500);
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.350);
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    transition: all 0.1s;
+}
+
+.address-field-close-btn:hover {
+    width: 1.5rem;
+    height: 1.5rem;
+    top: 0.4rem;
+    right: 0.4rem;
+    cursor: pointer;
+}
+
+/* ///////////////////////////////////Animation//////////////////////////////////////////// */
+
+@keyframes addressFieldEntrance {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 0;
+    }
+}

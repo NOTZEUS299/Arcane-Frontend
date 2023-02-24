@@ -1,0 +1,644 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,700&family=Kanit:wght@800&family=PT+Sans:wght@700&family=Prompt:wght@700&family=Rubik:wght@600&display=swap');
+
+.container {
+    background-color: #eaeded;
+    padding-bottom: 3600px;
+    /* filter: invert(1); */
+}
+
+.homebody {
+    background-color: #eaeded;
+    position: relative;
+    z-index: 0;
+}
+
+.advrtsbar {
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+    top: 74px;
+}
+
+.topcntntsale {
+    background-color: black;
+    color: white;
+    padding: 3px 0;
+    overflow: hidden;
+    /* filter: invert(1); */
+}
+
+.topcntntsale p {
+    animation: slide 18s linear infinite;
+    font-weight: 500;
+    color: white;
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-30%);
+    }
+}
+
+.imageslider {
+    top: 101px;
+    width: 100%;
+    height: 50%;
+    /* margin: 0 1.5%; */
+    position: absolute;
+    z-index: -1;
+}
+
+.imgesbg {
+    width: 100%;
+    height: 140vh;
+}
+
+.imgclss {
+    width: 100%;
+    height: 130vh;
+}
+
+.mainimgesdiv {
+    width: 100%;
+    height: 84vh;
+}
+
+#imgone {
+    background-image: url(imageone.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#imgtwo {
+    background-image: url(http://www.modellingagenciesmumbai.com/blog/wp-content/uploads/2020/04/Fashion-Photography.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+#imgthree {
+    background-image: url(https://cc-prod.scene7.com/is/image/CCProdAuthor/Fashion-photography_P3_720x366?$pjpeg$&jpegSize=200&wid=720);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#imgfour {
+    background-image: url(imagefour.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#imgfive {
+    background-image: url(imagefive.avif);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#imgsix {
+    background-image: url(imagesix.avif);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#imgseven {
+    background-image: url(imageseven.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#imgeight {
+    background-image: url(imageeight.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#imgnine {
+    background-image: url(imagenine.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#imgten {
+    background-image: url(imageten.webp);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#imgbgone {
+    background-image: linear-gradient(#071518, #eaeded, #071518);
+    padding-bottom: 3200px;
+}
+
+#imgbgtwo {
+    background-image: linear-gradient(#3f4342, #eaeded, #3f4342);
+    padding-bottom: 3200px;
+}
+
+#imgbgthree {
+    background-image: linear-gradient(#c37f02, #eaeded, #cc993b);
+    padding-bottom: 3200px;
+}
+
+#imgbgfour {
+    background-image: linear-gradient(#6a5644, #eaeded, #6a5644);
+    padding-bottom: 3200px;
+}
+
+#imgbgfive {
+    background-image: linear-gradient(#2f3032, #eaeded, #2f3032);
+    padding-bottom: 3200px;
+}
+
+#imgbgsix {
+    background-image: linear-gradient(#7c746f, #eaeded, #7c746f);
+    padding-bottom: 3200px;
+}
+
+#imgbgseven {
+    background-image: linear-gradient(#b29688, #eaeded, #b29688);
+    padding-bottom: 3200px;
+}
+
+#imgbgeight {
+    background-image: linear-gradient(#131112, #eaeded, #131112);
+    padding-bottom: 3200px;
+}
+
+#imgbgnine {
+    background-image: linear-gradient(#879391, #eaeded, #879391);
+    padding-bottom: 3200px;
+}
+
+#imgbgten {
+    background-image: linear-gradient(#818286, #eaeded, #818286);
+    padding-bottom: 3200px;
+}
+
+.slidesCntnt {
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    height: 180%;
+    /* background-color: black; */
+    /* margin: 0 1.5%; */
+}
+
+.slidecntntOne,
+.slidecntntTwo {
+    width: 97%;
+    margin: 0 1.5%;
+    height: 425px;
+    /* background-color: #fff; */
+}
+
+.fieldOne,
+.fieldTwo,
+.fieldThree,
+.fieldFour {
+    width: 99.8%;
+    margin: 0 0.1%;
+    height: 100%;
+    border-radius: 10px;
+    position: relative;
+    filter: brightness(100%);
+    border: 10px solid white;
+}
+
+.legendOne,
+.legendTwo,
+.legendThree,
+.legendFour {
+    font-size: 30px;
+    font-weight: 700;
+    -webkit-text-stroke: 1px white;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0px 2%;
+}
+
+.SlideShowOne,
+.SlideShowTwo {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 0;
+    top: 0;
+}
+
+.TrendingCards {
+    width: 220px;
+    height: 370px;
+    background-color: white;
+    margin: 0 5%;
+    border-radius: 10px;
+    transition: all 0.3s;
+    cursor: pointer;
+    background: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.image-container-card {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-container-card img {
+    width: 100%;
+}
+
+.TrendingCards:hover img {
+    animation: imageZoomIn 0.3s ease-in-out 1 forwards;
+}
+
+.this-Content-card-hover {
+    width: 117%;
+    height: 100%;
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    font-weight: 900;
+    color: white;
+    background: rgba(0, 0, 0, 0.158);
+    border-radius: 10px;
+    backdrop-filter: blur(2px);
+    display: none;
+    transition: all 0.5s;
+}
+
+.this-Content-card-hover h1 {
+    position: relative;
+}
+
+.this-Content-card-hover h1:hover::after {
+    content: " ";
+    height: 3px;
+    background-color: #fff;
+    position: absolute;
+    bottom: 0;
+    right: 49%;
+    animation: underline-width 0.5s ease-in-out 1 forwards;
+}
+
+.this-Content-card-hover h1:hover::before {
+    content: " ";
+    height: 3px;
+    background-color: #fff;
+    position: absolute;
+    bottom: 0;
+    left: 49%;
+    animation: underline-width 0.5s ease-in-out 1 forwards;
+}
+
+@keyframes underline-width {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 50%;
+    }
+}
+
+.TrendingCards:hover div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes imageZoomIn {
+    100% {
+        width: 110%;
+    }
+}
+
+.imgesbg .swiper-button-prev,
+.imgesbg .swiper-button-next {
+    top: 13%;
+    margin: 0 10px;
+}
+
+.imgesbg .swiper-button-prev::after,
+.imgesbg .swiper-button-next::after {
+    color: black;
+    font-size: 40px;
+    font-weight: bolder;
+}
+
+.imgesbg .swiper-button-prev:hover::after {
+    animation: onHoverPR 0.7s ease 1 forwards;
+}
+
+@keyframes onHoverPR {
+    0% {
+        transform: translateX(0px);
+    }
+
+    25% {
+        transform: translateX(-100px);
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    75% {
+        transform: translateX(100px);
+    }
+
+    100% {
+        transform: translateX(0px);
+    }
+}
+
+.imgesbg .swiper-button-next:hover::after {
+    animation: onHoverNX 0.7s ease 1 forwards;
+}
+
+@keyframes onHoverNX {
+    0% {
+        transform: translateX(0px);
+    }
+
+    25% {
+        transform: translateX(100px);
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    75% {
+        transform: translateX(-100px);
+    }
+
+    100% {
+        transform: translateX(0px);
+    }
+}
+
+.SlideShowOne .swiper-button-next::after,
+.SlideShowOne .swiper-button-prev::after,
+.SlideShowTwo .swiper-button-next::after,
+.SlideShowTwo .swiper-button-prev::after,
+.SlideShowFour .swiper-button-next::after,
+.SlideShowFour .swiper-button-prev::after {
+    color: black;
+    font-size: 30px;
+    font-weight: 900;
+    animation: rndom 15s ease infinite;
+    transition: all 0.3s;
+}
+
+@keyframes rndom {
+    0% {
+        transform: rotateY(15deg);
+    }
+
+    1% {
+        transform: rotateY(-15deg);
+    }
+
+    2% {
+        transform: rotateY(25deg);
+    }
+
+    4% {
+        transform: rotateY(-25deg);
+    }
+
+    5% {
+        transform: rotateY(0deg);
+    }
+
+    50% {
+        transform: rotateY(15deg);
+    }
+
+    51% {
+        transform: rotateY(-15deg);
+    }
+
+    52% {
+        transform: rotateY(25deg);
+    }
+
+    54% {
+        transform: rotateY(-25deg);
+    }
+
+    55% {
+        transform: rotateY(15deg);
+    }
+
+    96% {
+        transform: rotateY(-15deg);
+    }
+
+    97% {
+        transform: rotateY(25deg);
+    }
+
+    99% {
+        transform: rotateY(-25deg);
+    }
+
+    100% {
+        transform: rotateY(0deg);
+    }
+}
+
+.SlideShowOne .swiper-button-next:hover::after,
+.SlideShowOne .swiper-button-prev:hover::after {
+    text-shadow: 0px 0px 5px grey;
+}
+
+#imgone {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all;
+}
+
+.mainslideone {
+    box-shadow: 0px 0px 100px black;
+    border: 2px solid white;
+    padding: 10px 20px;
+    transform: skew(-10deg)skewY(-5deg);
+    text-align: center;
+    font-size: 150%;
+    /* -webkit-text-stroke: 1px black; */
+}
+
+.mainslideone h1:first-child {
+    color: white;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.mainslideone h1:last-child {
+    color: white;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+#stylingone {
+    font-family: 'Kanit', sans-serif;
+}
+
+#stylingtwo {
+    text-decoration: underline;
+}
+
+#imgseven {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.mainslidetwo {
+    text-align: center;
+    color: white;
+    width: 100%;
+    font-family: 'Rubik', sans-serif;
+    opacity: 0.95;
+    background: url(https://image.shutterstock.com/image-photo/black-wall-texture-rough-background-260nw-1450341161.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 0px -20px 90px black;
+    font-size: 100%;
+}
+
+.mainslidetwo>div {
+    padding: 10px 25px;
+}
+
+.mainslidetwo>h1 {
+    transform: skew(10deg);
+    width: 25%;
+    margin: 0 auto;
+    padding: 5px 25px;
+    font-family: 'Mouse Memoirs', sans-serif;
+}
+
+#imgtwo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainslidethree {
+    color: transparent;
+    -webkit-text-stroke: 2px black;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 100%;
+}
+
+.mainslidethree h1 {
+    font-size: 300%;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.stylingthree {
+    background-color: #c37f02;
+    color: white;
+    -webkit-text-stroke: 0px;
+    padding: 0 15px;
+    filter: brightness(110%);
+}
+
+.stylingfour {
+    border: 3px solid white;
+    background-color: black;
+    filter: brightness(110%);
+    color: white;
+    -webkit-text-stroke: 0px;
+    text-decoration: underline;
+    padding: 0 10px;
+}
+
+#imgthree {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainslidefour {
+    box-shadow: 0px 0px 100px black;
+    border: 10px solid white;
+    padding: 10px 25px;
+    color: white;
+    -webkit-text-stroke: 2px black;
+    text-align: center;
+    text-shadow: 0px 0px 10px black;
+}
+
+.stylingfive {
+    background-color: #5f4e39;
+    -webkit-text-stroke: 0px;
+    padding: 0 10px;
+}
+
+.stylingsix {
+    font-family: 'Prompt', sans-serif;
+    -webkit-text-stroke: 0px;
+    background-color: rgb(48, 48, 48);
+    padding: 0 15px;
+}
+
+.stylingseven {
+    text-decoration: underline;
+    color: #423423;
+    -webkit-text-stroke: 0px;
+    text-shadow: 0px 0px 0px;
+}
+
+
+.lediv {
+    position: relative;
+}
+
+.lecrown {
+    position: absolute;
+    top: -2%;
+    left: -2%;
+    font-size: 15px;
+    color: white;
+    transform: rotate(-10deg);
+}
+
+
+.legendThree {
+    position: relative;
+    width: 208px;
+}
+
+.legendFour {
+    position: relative;
+}
+
+.starsNewArr {
+    position: absolute;
+    right: 0;
+    bottom: 5%;
+}
+
+.firefordeals {
+    position: absolute;
+    left: 9.5%;
+    bottom: 10%;
+}

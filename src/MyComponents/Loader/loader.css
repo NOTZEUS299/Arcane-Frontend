@@ -1,0 +1,30 @@
+.loader-main-container {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.300);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 6;
+    backdrop-filter: blur(3px);
+    /* display: none; */
+}
+
+.loader-main-container img {
+    /* filter: invert(1); */
+    font-size: 5rem;
+    transition: all 0.3s;
+    -webkit-text-stroke: 2px rgba(0, 0, 0, 0.226);
+    animation: loader 1s ease-in-out infinite;
+}
+
+@keyframes loader {
+    50% {
+        -webkit-text-stroke: 2px black;
+        transform: translateY(-5px);
+        color: #c0c0c0;
+        filter: brightness(150%)drop-shadow(5px 5px 10px black);
+    }
+}

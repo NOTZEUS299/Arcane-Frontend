@@ -1,0 +1,318 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400&display=swap');
+
+#cart-fake-div {
+    background: #e0e0e0;
+    transition: all 0.5s;
+}
+
+.cart-container-if-data-is-null {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background: #e0e0e0;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-container-if-data-is-null h1 {
+    color: #353535;
+    font-size: 2.5rem;
+    position: relative;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.empty-cart-icon {
+    position: absolute;
+    top: 0.5rem;
+}
+
+.cart-main-container {
+    width: 96%;
+    margin: 0 auto;
+    background: #e0e0e0;
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: 3fr 1fr;
+    position: relative;
+    transition: all 0.5s;
+}
+
+.added-products-cards-container {
+    width: 100%;
+    /* overflow: hidden; */
+    margin: 0 auto;
+    position: relative;
+    transition: all 0.5s;
+}
+
+.side-subtotal-div {
+    background-color: #fff;
+    width: 100%;
+    height: fit-content;
+    margin: 0 auto;
+    position: sticky;
+    top: 16%;
+    box-shadow: 10px 10px 20px #5a5a5a,
+        -10px -10px 20px #ffffff;
+    border-radius: 10px;
+    transition: all 0.3s;
+    padding: 0.5rem 1rem;
+    transition: all 0.5s;
+}
+
+.side-subtotal-div h2 {
+    color: #474747e7;
+    font-size: 1.5rem;
+    font-family: 'Ubuntu', sans-serif;
+    transition: all 0.5s;
+}
+
+.side-subtotal-div h3 {
+    color: #5a5a5ad5;
+    font-size: 1.25rem;
+    margin-top: 0.5rem;
+    transition: all 0.5s;
+}
+
+.card-header {
+    width: 100%;
+    height: 10vh;
+    background-color: white;
+    transition: all 0.3s;
+    box-shadow: 10px 10px 20px #5a5a5a,
+        -10px -10px 20px #ffffff;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3rem;
+    transition: all 0.5s;
+}
+
+.card-header h1 {
+    color: #474747;
+    font-size: 1.7rem;
+    font-family: 'Ubuntu', sans-serif;
+    transition: all 0.5s;
+}
+
+.card-header h1:last-child {
+    margin-left: 12rem;
+}
+
+.cart-product-card {
+    width: 100%;
+    height: 350px;
+    background-color: #fff;
+    margin: 20px 0;
+    box-shadow: 10px 10px 20px #5a5a5a,
+        -10px -10px 20px #ffffff;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-product-card>div:first-child {
+    width: 37%;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-product-card>div {
+    width: 73%;
+    height: 100%;
+}
+
+.card-cart-image {
+    width: 90%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 10px solid white;
+    border-radius: 20px;
+    overflow: hidden;
+    background: white;
+}
+
+.card-cart-image>img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: inset 10px black;
+}
+
+.cart-content-head {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.cart-card-content h1 {
+    font-size: 1.5rem;
+    color: #5a5a5a;
+    font-family: 'Ubuntu', sans-serif;
+    letter-spacing: 0.05rem;
+    word-spacing: 0.1rem;
+}
+
+.rupee-symbol-for-price {
+    position: absolute;
+    left: -1rem;
+    top: 0.05rem;
+    font-size: 1.4rem;
+}
+
+.cart-card-content h2 {
+    font-size: 1rem;
+    color: #5a5a5a;
+    cursor: pointer;
+    padding-top: 0.6rem;
+    transition: all 0.3s;
+}
+
+.cart-card-content h2:hover {
+    color: #474747;
+    text-decoration: underline;
+}
+
+
+.description-content {
+    font-size: 1rem;
+    color: #5a5a5a;
+    cursor: pointer;
+    padding-top: 0.5rem;
+    transition: all 0.3s;
+    width: 60%;
+}
+
+.stock-left-content {
+    font-size: 0.9rem;
+    color: #5a5a5a;
+    cursor: pointer;
+    /* padding-top: 0.25rem; */
+}
+
+.stock-left-content span {
+    text-decoration: underline;
+}
+
+.cart-card-content {
+    padding: 5%;
+    padding-left: 0;
+}
+
+#cart-card-quantity {
+    margin-top: 0.4rem;
+
+}
+
+.all-products-subtotal-div {
+    width: 100%;
+    height: 10vh;
+    background-color: white;
+    transition: all 0.3s;
+    box-shadow: 10px 10px 20px #5a5a5a,
+        -10px -10px 20px #ffffff;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3rem;
+}
+
+.all-products-subtotal-div h1 {
+    color: #474747;
+    font-size: 1.7rem;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+#subtotal-rupee-symbol {
+    font-size: 1.8rem;
+    transform: translateY(0.3rem);
+}
+
+.cart-content-buttons {
+    position: absolute;
+    bottom: 3.4rem;
+}
+
+.cart-content-buttons button {
+    margin: 0 0.7rem 0 0;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s;
+    border: 1px solid #e0e0e0;
+    border-radius: 2.5px;
+    cursor: pointer;
+    padding: 0.25rem 1.5rem;
+    color: rgba(0, 0, 0, 0.700);
+}
+
+.cart-content-buttons button:last-child {
+    padding: 0.25rem 0.7rem;
+    background: #47474786;
+    color: #e0e0e0;
+}
+
+.cart-content-buttons button:hover:first-child {
+    border-color: #47474786;
+    color: #000;
+}
+
+.cart-content-buttons button:hover:last-child {
+    background: #4747470a;
+    color: #47474786;
+    border-color: #47474786;
+}
+
+.bill-table-row td {
+    font-size: 0.633rem;
+    padding: 0.5rem 0.1rem;
+    line-height: 1rem;
+}
+
+.true-price-spacing {
+    margin-left: 12.5rem;
+}
+
+.side-subtotal-div button {
+    width: 100%;
+    font-size: 1rem;
+    color: #474747;
+    background: #4747470a;
+    padding: 0.25rem 0.5rem;
+    margin: 5% 0;
+    border-radius: 5px;
+    border: 1px solid #47474786;
+    display: inline;
+    cursor: pointer;
+    transition: 0.2s all;
+}
+
+.side-subtotal-div button:hover {
+    color: #353535;
+    width: 99%;
+    box-shadow: 0.05rem 0.05rem 0.1rem #474747;
+}
+
+.side-subtotal-div button:active {
+    color: #353535;
+    width: 99%;
+    box-shadow: -0.05rem -0.05rem 0.1rem #474747;
+}
+
+.bill-tag-cart {
+    display: none;
+}
+
+#true-show-bill {
+    display: block;
+}
