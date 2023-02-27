@@ -1,53 +1,223 @@
-.address-field-container {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500;700&display=swap');
 
-.address-field-tab {
-    width: 45%;
-    height: 70%;
+.add-address-slate-container {
+    width: 45vw;
+    height: 90vh;
     background: rgba(255, 255, 255, 0.3);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(5px);
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.18);
+    animation: addAddressEntrance 0.5s ease-in-out 1 forwards;
+}
+
+.add-address-slate-container h2 {
+    color: rgb(75, 75, 75);
+    font-family: 'Rubik', sans-serif;
+    margin-top: 1rem;
+    margin-left: 1rem;
+}
+
+.field-set-one {
+    margin-top: 1.5rem;
+    margin-left: 0.5rem;
+}
+
+.field-container {
     position: relative;
-    animation: addressFieldEntrance 0.5s ease-in-out 1 forwards;
-    z-index: 5;
+    display: inline;
 }
 
-.address-field-close-btn {
-    width: 1.3rem;
-    height: 1.3rem;
-    border: 0.2rem solid rgba(255, 255, 255, 0.500);
-    border-radius: 50%;
-    background: rgba(0, 0, 0, 0.350);
+.field-label {
     position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    transition: all 0.1s;
+    left: 5%;
+    bottom: -0.1rem;
+    transition: all 0.3s;
+    color: rgb(75, 75, 75);
+    font-family: 'Rubik', sans-serif;
 }
 
-.address-field-close-btn:hover {
-    width: 1.5rem;
-    height: 1.5rem;
-    top: 0.4rem;
-    right: 0.4rem;
-    cursor: pointer;
+.field-inp {
+    margin: 0rem 0.5rem 0.5rem 0.2rem;
+    width: 30%;
+    height: 5vh;
+    border-width: 0;
+    box-shadow: inset 1px 1px 1px #5c5c5c,
+        inset -1px -1px 1px #ffffff;
+    border-radius: 5px;
+    padding-left: 10px;
+    background: rgba(255, 255, 255, 0.3);
 }
 
-/* ///////////////////////////////////Animation//////////////////////////////////////////// */
+.field-set-two {
+    margin-top: 1.5rem;
+    margin-left: 0.5rem;
+}
 
-@keyframes addressFieldEntrance {
+.field-two-container {
+    position: relative;
+    display: block;
+    margin-top: 1.5rem;
+}
+
+.field-two-label {
+    position: absolute;
+    left: 1.5%;
+    bottom: 0.5rem;
+    color: rgb(75, 75, 75);
+    font-family: 'Rubik', sans-serif;
+}
+
+.field-two-inp {
+    margin: 0rem 0.5rem 0.5rem 0.2rem;
+    width: 30%;
+    height: 5vh;
+    border-width: 0;
+    box-shadow: inset 1px 1px 1px #5c5c5c,
+        inset -1px -1px 1px #ffffff;
+    border-radius: 5px;
+    padding-left: 10px;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+#address {
+    width: 90%;
+}
+
+#locality {
+    width: 90%;
+}
+
+#landmark {
+    width: 90%;
+}
+
+.field-set-three {
+    margin-top: 1.5rem;
+    margin-left: 0.5rem;
+}
+
+.field-three-container {
+    position: relative;
+    display: inline;
+}
+
+.field-three-label {
+    position: absolute;
+    left: 5%;
+    bottom: -0.1rem;
+    transition: all 0.3s;
+    color: rgb(75, 75, 75);
+    font-family: 'Rubik', sans-serif;
+}
+
+.field-three-inp {
+    margin: 0rem 0.5rem 0.5rem 0.2rem;
+    width: 30%;
+    height: 5vh;
+    border-width: 0;
+    box-shadow: inset 1px 1px 1px #5c5c5c,
+        inset -1px -1px 1px #ffffff;
+    border-radius: 5px;
+    /* padding-left: 10px; */
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.field-set-four {
+    margin-top: 1.5rem;
+    margin-left: 0.5rem;
+}
+
+.field-four-container {
+    position: relative;
+    display: inline;
+}
+
+.field-four-label {
+    position: absolute;
+    left: 5%;
+    bottom: -0.1rem;
+    transition: all 0.3s;
+    color: rgb(75, 75, 75);
+    font-family: 'Rubik', sans-serif;
+}
+
+.field-four-inp {
+    margin: 0rem 0.5rem 0.5rem 0.2rem;
+    width: 30%;
+    height: 5vh;
+    border-width: 0;
+    box-shadow: inset 1px 1px 1px #5c5c5c,
+        inset -1px -1px 1px #ffffff;
+    border-radius: 5px;
+    padding-left: 10px;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.field-inp,
+.field-two-inp,
+.field-three-inp,
+.field-four-inp {
+    background: rgba(255, 255, 255, 0.700);
+}
+
+.field-inp:focus,
+.field-two-inp:focus,
+.field-three-inp:focus,
+.field-four-inp:focus {
+    outline: 1px solid #5a5a5a;
+}
+
+#true {
+    animation: fieldLabelUp 0.3s ease-in-out 1 forwards;
+}
+
+.add-address-btn-container {
+    width: 100%;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.add-address-btn-container>button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #5a5a5a;
+    margin-right: 15px;
+    border: 0;
+    border-radius: 5px;
+    background: linear-gradient(145deg, #f0f0f0, #cacaca);
+    box-shadow: 4px 4px 7px #5a5a5a,
+        -4px -4px 7px #ffffff;
+    transition: all 0.3s ease-in-out;
+}
+
+.add-address-btn-container>button:hover {
+    border-radius: 5px;
+    background: linear-gradient(145deg, #cacaca, #f0f0f0);
+    box-shadow: 4px 4px 7px #5a5a5a,
+        -4px -4px 7px #ffffff;
+}
+
+.add-address-btn-container>button:active {
+    border-radius: 5px;
+    background: #e0e0e0;
+    box-shadow: inset 4px 4px 7px #bebebe,
+        inset -4px -4px 7px #ffffff;
+}
+
+/* ///////////////////////////////////////Animation///////////////////////////////////// */
+
+@keyframes addAddressEntrance {
     0% {
-        width: 0;
-        height: 0;
         opacity: 0;
+    }
+}
+
+@keyframes fieldLabelUp {
+    100% {
+        transform: translateY(-2rem);
     }
 }

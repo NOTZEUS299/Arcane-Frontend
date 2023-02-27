@@ -47,7 +47,6 @@ function App() {
   }, []);
 
   // console.log(fvData);
-
   return (
     <>
       {loading && <Loader />}

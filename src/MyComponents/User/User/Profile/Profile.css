@@ -178,6 +178,49 @@
     color: #5a5a5a;
 }
 
+.user-address-details {
+    width: 85%;
+    margin: 4% auto 0;
+    color: #5a5a5a;
+    position: relative;
+    transform: scale(0);
+    animation: fieldsPopUp 0.3s ease-in-out 1.5s 1 forwards;
+}
+
+.address-field-box {
+    width: 100%;
+    height: 15vh;
+    border: 0;
+    border-radius: 5px;
+    background: linear-gradient(145deg, #f0f0f0, #cacaca);
+    box-shadow: 4px 4px 7px #5a5a5a,
+        -4px -4px 7px #ffffff;
+    margin-bottom: 2vh;
+    padding: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-Address-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.plus-symbol {
+    font-size: 1.5rem;
+}
+
+#address-field-id {
+    outline: 0;
+    border-radius: 5px;
+    background: linear-gradient(145deg, #cacaca, #f0f0f0);
+    box-shadow: 4px 4px 7px #5a5a5a,
+        -4px -4px 7px #ffffff;
+}
+
 #mail-field {
     padding-left: 13%;
 }
@@ -186,12 +229,7 @@
     padding-left: 18%;
 }
 
-#address-field {
-    height: 15vh;
-    padding-left: 5%;
-}
-
-.user-content-details>input:focus {
+.address-field-input:focus {
     outline: 0;
     border-radius: 5px;
     background: linear-gradient(145deg, #cacaca, #f0f0f0);
@@ -225,6 +263,35 @@
     background: #e0e0e0;
     box-shadow: inset 4px 4px 7px #bebebe,
         inset -4px -4px 7px #ffffff;
+}
+
+.addAddress-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    z-index: 5;
+}
+
+.address-field-close-btn-container {
+    position: absolute;
+    top: 6%;
+    right: 28%;
+    z-index: 5;
+}
+
+.address-field-close-btn {
+    width: 1.3rem;
+    height: 1.3rem;
+    border: 0.2rem solid white;
+    outline: 1px solid gray;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.300);
+    position: relative;
+    cursor: pointer;
 }
 
 /* //////////////////////////////////////////////////////////////Animations////////////////////////////////////////////////////////////////// */

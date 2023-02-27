@@ -4,6 +4,7 @@ import { BsBoxSeam } from "react-icons/bs";
 import { FaHeart } from "react-icons/fa";
 import { RiShoppingCartFill } from "react-icons/ri";
 import { MdOutlineClose } from "react-icons/md";
+import { AiOutlinePlusSquare } from "react-icons/ai";
 import "./Profile.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -13,20 +14,17 @@ import Address from "../../../../utilities/address/Address";
 export const Profile = () => {
   const [userInfo, setUserInfo] = useState(false);
   const [userDetails] = useState(JSON.parse(localStorage.getItem("userData")));
-  const [address, setAddress] = useState(false);
+  const [addressFieldId, setAddressFieldId] = useState("");
+  const [addressDate, setAddressData] = useState();
+  const [addAddress, setAddAddress] = useState(false);
 
   const navigate = useNavigate();
 
   const handleUserInfo = () => {
     setUserInfo(true);
-    axios
-      .get("/user/getaddress")
-      .then((x) => {
-        console.log(x, "fgfg");
-      })
-      .catch((x) => {
-        console.log(x);
-      });
+    axios.get("/user/getaddress").then((x) => {
+      setAddressData(x);
+    });
   };
 
   const handleOrders = () => {
@@ -39,10 +37,6 @@ export const Profile = () => {
 
   const handleCart = () => {
     navigate("/cart");
-  };
-
-  const handleAddress = () => {
-    setAddress(true);
   };
 
   const handleSignOut = async () => {
@@ -100,7 +94,19 @@ export const Profile = () => {
           </div>
         </div>
       </div>
-      {address && <Address />}
+      {addAddress && (
+        <div className="addAddress-container">
+          <div className="address-field-close-btn-container">
+            <div
+              className="address-field-close-btn"
+              onClick={() => {
+                setAddAddress(false);
+              }}
+            ></div>
+          </div>
+          <Address />
+        </div>
+      )}
       {userInfo && (
         <div className="user-info-pop-up">
           <div className="shape-one" id="userPopUpShapeOne"></div>
@@ -157,14 +163,36 @@ export const Profile = () => {
               />
             </div>
             <div
-              className="user-content-details"
+              className="user-address-details"
               style={{ animationDelay: "2.1s" }}
-              onClick={() => handleAddress()}
+              id="address-field-container"
+              onPointerOut={() => {
+                setAddressFieldId("");
+              }}
             >
-              <label htmlFor="address-field" id="label-for-address-field">
-                Address :
-              </label>
-              <input type="text" name="" value={" "} id="address-field" />
+              <div
+                className="address-field-box"
+                id={addressFieldId}
+                onClick={() => {
+                  setAddressFieldId("address-field-id");
+                }}
+              >
+                {addressDate === undefined ? (
+                  <div
+                    className="add-Address-container"
+                    onClick={() => {
+                      setAddAddress(true);
+                    }}
+                  >
+                    <section className="plus-symbol">
+                      <AiOutlinePlusSquare />
+                    </section>
+                    <section className="Address-text">Address</section>
+                  </div>
+                ) : (
+                  <div>sdfd</div>
+                )}
+              </div>
             </div>
             <div
               className="user-content-details"
