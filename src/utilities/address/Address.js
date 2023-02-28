@@ -1,25 +1,162 @@
 import React, { useState } from "react";
 import "./address.css";
+import { axiosIntance as axios } from "../../MyComponents/Base-Url/AxiosInstance";
 
 const Address = () => {
+  const [userDetails, setUserDetails] = useState({
+    name: "",
+    mobileNumber: "",
+    pinCode: "",
+    locality: "",
+    address: "",
+    cityDistrictTown: "",
+    state: "",
+    landmark: "",
+    alternatePhone: "",
+    addressType: "",
+  });
   const [fieldSetOne, setFieldSetOne] = useState({
     fullname: false,
+    fullnameFilled: false,
     phoneNumber: false,
+    phoneNumberFilled: false,
   });
   const [fieldSetTwo, setFieldSetTwo] = useState({
     pincode: false,
+    pincodeFilled: false,
     address: false,
+    addressFilled: false,
     locality: false,
+    localityFilled: false,
     landmark: false,
+    landmarkFilled: false,
   });
   const [fieldSetThree, setFieldSetThree] = useState({
     city: false,
+    cityFilled: false,
     state: false,
+    stateFilled: false,
   });
   const [fieldSetFour, setFieldSetFour] = useState({
     alternate: false,
+    alternateFilled: false,
     type: false,
+    typeFilled: false,
   });
+
+  const handleName = (e) => {
+    if (e.target.value !== "") {
+      setFieldSetOne({ ...fieldSetOne, fullnameFilled: true });
+      setUserDetails({ ...userDetails, name: e.target.value });
+    } else {
+      setFieldSetOne({ ...fieldSetOne, fullnameFilled: false });
+    }
+  };
+
+  const handlePhone = (e) => {
+    if (e.target.value !== "") {
+      setFieldSetOne({ ...fieldSetOne, phoneNumberFilled: true });
+      setUserDetails({ ...userDetails, mobileNumber: e.target.value });
+    } else {
+      setFieldSetOne({ ...fieldSetOne, phoneNumberFilled: false });
+    }
+  };
+
+  const handlePincode = (e) => {
+    if (e.target.value !== "") {
+      setFieldSetTwo({ ...fieldSetTwo, pincodeFilled: true });
+      setUserDetails({ ...userDetails, pinCode: e.target.value });
+    } else {
+      setFieldSetTwo({ ...fieldSetTwo, pincodeFilled: false });
+    }
+  };
+
+  const handleLocality = (e) => {
+    if (e.target.value !== "") {
+      setFieldSetTwo({ ...fieldSetTwo, localityFilled: true });
+      setUserDetails({ ...userDetails, locality: e.target.value });
+    } else {
+      setFieldSetTwo({ ...fieldSetTwo, localityFilled: false });
+    }
+  };
+
+  const handleAddress = (e) => {
+    if (e.target.value !== "") {
+      setFieldSetTwo({ ...fieldSetTwo, addressFilled: true });
+      setUserDetails({ ...userDetails, address: e.target.value });
+    } else {
+      setFieldSetTwo({ ...fieldSetTwo, addressFilled: false });
+    }
+  };
+
+  const handleCity = (e) => {
+    if (e.target.value !== "") {
+      setFieldSetThree({ ...fieldSetThree, cityFilled: true });
+      setUserDetails({ ...userDetails, cityDistrictTown: e.target.value });
+    } else {
+      setFieldSetThree({ ...fieldSetThree, cityFilled: false });
+    }
+  };
+
+  const handleState = (e) => {
+    if (e.target.value !== "") {
+      setFieldSetThree({ ...fieldSetThree, stateFilled: true });
+      setUserDetails({ ...userDetails, state: e.target.value });
+    } else {
+      setFieldSetThree({ ...fieldSetThree, stateFilled: false });
+    }
+  };
+
+  const handleLandmark = (e) => {
+    if (e.target.value !== "") {
+      setFieldSetTwo({ ...fieldSetTwo, landmarkFilled: true });
+      setUserDetails({ ...userDetails, landmark: e.target.value });
+    } else {
+      setFieldSetTwo({ ...fieldSetTwo, landmarkFilled: false });
+    }
+  };
+
+  const handleAlternate = (e) => {
+    if (e.target.value !== "") {
+      setFieldSetFour({ ...fieldSetFour, alternateFilled: true });
+      setUserDetails({ ...userDetails, alternatePhone: e.target.value });
+    } else {
+      setFieldSetFour({ ...fieldSetFour, alternateFilled: false });
+    }
+  };
+
+  const handleType = (e) => {
+    if (e.target.value !== "") {
+      setFieldSetFour({ ...fieldSetFour, typeFilled: true });
+      setUserDetails({ ...userDetails, addressType: e.target.value });
+    } else {
+      setFieldSetFour({ ...fieldSetFour, typeFilled: false });
+    }
+  };
+
+  const handleOnAddAddress = () => {
+    const rectObj = {
+      name: "",
+      mobileNumber: "",
+      pinCode: "",
+      locality: "",
+      address: "",
+      cityDistrictTown: "",
+      state: "",
+      landmark: "",
+      alternatePhone: "",
+      addressType: "",
+    };
+
+    if (JSON.stringify(userDetails) !== JSON.stringify(rectObj)) {
+      axios
+        .post("/user/address/create", { payload: { address: userDetails } })
+        .then((x) => {
+          window.location.reload(true);
+        });
+    }
+  };
+
   return (
     <div className="add-address-slate-container">
       <h2>Add a new address</h2>
@@ -36,7 +173,11 @@ const Address = () => {
           <label
             htmlFor="fullname"
             className="field-label"
-            id={`${fieldSetOne.fullname}`}
+            id={
+              fieldSetOne.fullnameFilled
+                ? `${fieldSetOne.fullnameFilled}`
+                : `${fieldSetOne.fullname}`
+            }
           >
             Name
           </label>
@@ -45,6 +186,7 @@ const Address = () => {
             name="fullname"
             className="field-inp"
             id="fullname"
+            onChange={(e) => handleName(e)}
           />
         </div>
         <div
@@ -59,7 +201,11 @@ const Address = () => {
           <label
             htmlFor="phone-number"
             className="field-label"
-            id={`${fieldSetOne.phoneNumber}`}
+            id={
+              fieldSetOne.phoneNumberFilled
+                ? `${fieldSetOne.phoneNumberFilled}`
+                : `${fieldSetOne.phoneNumber}`
+            }
           >
             Phone number
           </label>
@@ -68,6 +214,7 @@ const Address = () => {
             name="phonenumber"
             className="field-inp"
             id="phone-number"
+            onChange={(e) => handlePhone(e)}
           />
         </div>
       </div>
@@ -84,7 +231,11 @@ const Address = () => {
           <label
             htmlFor="pincode"
             className="field-two-label"
-            id={`${fieldSetTwo.pincode}`}
+            id={
+              fieldSetTwo.pincodeFilled
+                ? `${fieldSetTwo.pincodeFilled}`
+                : `${fieldSetTwo.pincode}`
+            }
           >
             Pincode
           </label>
@@ -93,6 +244,7 @@ const Address = () => {
             name="pincode"
             className="field-inp"
             id="pincode"
+            onChange={(e) => handlePincode(e)}
           />
         </div>
         <div
@@ -107,7 +259,11 @@ const Address = () => {
           <label
             htmlFor="address"
             className="field-two-label"
-            id={`${fieldSetTwo.address}`}
+            id={
+              fieldSetTwo.addressFilled
+                ? `${fieldSetTwo.addressFilled}`
+                : `${fieldSetTwo.address}`
+            }
           >
             Flat, House no., Building, Company, Apartment
           </label>
@@ -116,6 +272,7 @@ const Address = () => {
             name="address"
             className="field-two-inp"
             id="address"
+            onChange={(e) => handleAddress(e)}
           />
         </div>
         <div
@@ -130,7 +287,11 @@ const Address = () => {
           <label
             htmlFor="locality"
             className="field-two-label"
-            id={`${fieldSetTwo.locality}`}
+            id={
+              fieldSetTwo.localityFilled
+                ? `${fieldSetTwo.localityFilled}`
+                : `${fieldSetTwo.locality}`
+            }
           >
             Area, Street, Sector, Village
           </label>
@@ -139,6 +300,7 @@ const Address = () => {
             name="locality"
             className="field-inp"
             id="locality"
+            onChange={(e) => handleLocality(e)}
           />
         </div>
         <div
@@ -153,7 +315,11 @@ const Address = () => {
           <label
             htmlFor="landmark"
             className="field-two-label"
-            id={`${fieldSetTwo.landmark}`}
+            id={
+              fieldSetTwo.landmarkFilled
+                ? `${fieldSetTwo.landmarkFilled}`
+                : `${fieldSetTwo.landmark}`
+            }
           >
             Landmark
           </label>
@@ -162,6 +328,7 @@ const Address = () => {
             name="landmark"
             className="field-two-inp"
             id="landmark"
+            onChange={(e) => handleLandmark(e)}
           />
         </div>
       </div>
@@ -178,7 +345,11 @@ const Address = () => {
           <label
             htmlFor="city"
             className="field-three-label"
-            id={`${fieldSetThree.city}`}
+            id={
+              fieldSetThree.cityFilled
+                ? `${fieldSetThree.cityFilled}`
+                : `${fieldSetThree.city}`
+            }
           >
             City/Town
           </label>
@@ -187,6 +358,7 @@ const Address = () => {
             name="city"
             className="field-three-inp"
             id="city"
+            onChange={(e) => handleCity(e)}
           />
         </div>
         <div
@@ -201,11 +373,20 @@ const Address = () => {
           <label
             htmlFor="state"
             className="field-three-label"
-            id={`${fieldSetThree.state}`}
+            id={
+              fieldSetThree.stateFilled
+                ? `${fieldSetThree.stateFilled}`
+                : `${fieldSetThree.state}`
+            }
           >
             Choose a state
           </label>
-          <select name="state" className="field-three-inp" id="state">
+          <select
+            name="state"
+            className="field-three-inp"
+            id="state"
+            onChange={(e) => handleState(e)}
+          >
             <option value=""></option>
             <option value="Andhra Pradesh">Andhra Pradesh</option>
             <option value="Andaman and Nicobar Islands">
@@ -263,7 +444,11 @@ const Address = () => {
           <label
             htmlFor="alternatephonenumber"
             className="field-four-label"
-            id={`${fieldSetFour.alternate}`}
+            id={
+              fieldSetFour.alternateFilled
+                ? `${fieldSetFour.alternateFilled}`
+                : `${fieldSetFour.alternate}`
+            }
           >
             Alternate phone
           </label>
@@ -272,6 +457,7 @@ const Address = () => {
             name="alternatephonenumber"
             className="field-four-inp"
             id="alternatephonenumber"
+            onChange={(e) => handleAlternate(e)}
           />
         </div>
         <div
@@ -286,11 +472,20 @@ const Address = () => {
           <label
             htmlFor="type"
             className="field-four-label"
-            id={`${fieldSetFour.type}`}
+            id={
+              fieldSetFour.typeFilled
+                ? `${fieldSetFour.typeFilled}`
+                : `${fieldSetFour.type}`
+            }
           >
             Address type
           </label>
-          <select name="type" className="field-four-inp" id="type">
+          <select
+            name="type"
+            className="field-four-inp"
+            id="type"
+            onChange={(e) => handleType(e)}
+          >
             <option value=""></option>
             <option value="Home">Home (7am - 9pm delivery)</option>
             <option value="Office">
@@ -300,7 +495,7 @@ const Address = () => {
         </div>
       </div>
       <div className="add-address-btn-container">
-        <button>Add address</button>
+        <button onClick={() => handleOnAddAddress()}>Add address</button>
       </div>
     </div>
   );

@@ -15,7 +15,7 @@ export const Profile = () => {
   const [userInfo, setUserInfo] = useState(false);
   const [userDetails] = useState(JSON.parse(localStorage.getItem("userData")));
   const [addressFieldId, setAddressFieldId] = useState("");
-  const [addressDate, setAddressData] = useState();
+  const [addressData, setAddressData] = useState();
   const [addAddress, setAddAddress] = useState(false);
 
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ export const Profile = () => {
   const handleUserInfo = () => {
     setUserInfo(true);
     axios.get("/user/getaddress").then((x) => {
-      setAddressData(x);
+      setAddressData(x.data.userAddress.address);
     });
   };
 
@@ -166,7 +166,7 @@ export const Profile = () => {
               className="user-address-details"
               style={{ animationDelay: "2.1s" }}
               id="address-field-container"
-              onPointerOut={() => {
+              onBlur={() => {
                 setAddressFieldId("");
               }}
             >
@@ -177,7 +177,7 @@ export const Profile = () => {
                   setAddressFieldId("address-field-id");
                 }}
               >
-                {addressDate === undefined ? (
+                {addressData === undefined ? (
                   <div
                     className="add-Address-container"
                     onClick={() => {
@@ -190,7 +190,50 @@ export const Profile = () => {
                     <section className="Address-text">Address</section>
                   </div>
                 ) : (
-                  <div>sdfd</div>
+                  <div className="address-field-users-address">
+                    <label htmlFor="mail-field">Address :</label>
+                    <div
+                      style={
+                        addressData?.length > 1
+                          ? { overflowY: "scroll", height: "20vh" }
+                          : {}
+                      }
+                    >
+                      {addressData.length > 0 &&
+                        addressData.map((x) => {
+                          return (
+                            <div className="address-field-addresses">
+                              <input
+                                type="radio"
+                                name="address"
+                                id={x?._id}
+                                onChange={(e) => {
+                                  console.log(e.target.id);
+                                }}
+                              />
+                              <div>
+                                <section>{x?.name}</section>
+                                <section>
+                                  <span>{x?.address},</span>
+                                  <span>{x?.locality}</span>
+                                </section>
+                                <section>
+                                  <span>{x?.cityDistrictTown} ,</span>
+                                  <span>{x?.state} </span>
+                                  <span>{x?.pinCode}</span>
+                                </section>
+                                India
+                                <section>
+                                  Phone :<span>{x?.mobileNumber},</span>
+                                  <span> {x?.alternatePhone}</span>
+                                </section>
+                                <section>{x?.addressType}</section>
+                              </div>
+                            </div>
+                          );
+                        })}
+                    </div>
+                  </div>
                 )}
               </div>
             </div>

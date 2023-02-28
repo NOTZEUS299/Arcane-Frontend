@@ -192,6 +192,7 @@
     box-shadow: 4px 4px 7px #5a5a5a,
         -4px -4px 7px #ffffff;
     transition: all 0.3s ease-in-out;
+    cursor: pointer;
 }
 
 .add-address-btn-container>button:hover {
