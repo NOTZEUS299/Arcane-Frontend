@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./address.css";
 import { axiosIntance as axios } from "../../MyComponents/Base-Url/AxiosInstance";
 
-const Address = () => {
+const Address = (props) => {
   const [userDetails, setUserDetails] = useState({
     name: "",
     mobileNumber: "",
@@ -157,9 +157,67 @@ const Address = () => {
     }
   };
 
+  const handleOnEditAddress = () => {
+    setUserDetails({ ...userDetails, _id: props?.address[0]?._id });
+    const rectObj = {
+      name: "",
+      mobileNumber: "",
+      pinCode: "",
+      locality: "",
+      address: "",
+      cityDistrictTown: "",
+      state: "",
+      landmark: "",
+      alternatePhone: "",
+      addressType: "",
+      _id: undefined,
+    };
+
+    if (JSON.stringify(userDetails) !== JSON.stringify(rectObj)) {
+      axios
+        .post("/user/address/create", { payload: { address: userDetails } })
+        .then((x) => {
+          window.location.reload(true);
+        });
+    }
+  };
+
+  useEffect(() => {
+    if (props?.boolean) {
+      setFieldSetOne({
+        fullname: false,
+        fullnameFilled: true,
+        phoneNumber: false,
+        phoneNumberFilled: true,
+      });
+      setFieldSetTwo({
+        pincode: false,
+        pincodeFilled: true,
+        address: false,
+        addressFilled: true,
+        locality: false,
+        localityFilled: true,
+        landmark: false,
+        landmarkFilled: true,
+      });
+      setFieldSetThree({
+        city: false,
+        cityFilled: true,
+        state: false,
+        stateFilled: true,
+      });
+      setFieldSetFour({
+        alternate: false,
+        alternateFilled: true,
+        type: false,
+        typeFilled: true,
+      });
+    }
+  }, [props]);
+
   return (
     <div className="add-address-slate-container">
-      <h2>Add a new address</h2>
+      {props?.boolean ? <h2>Edit address</h2> : <h2>Add a new address</h2>}
       <div className="field-set-one">
         <div
           className="field-container"
@@ -187,6 +245,7 @@ const Address = () => {
             className="field-inp"
             id="fullname"
             onChange={(e) => handleName(e)}
+            defaultValue={props?.boolean ? props?.address[0]?.name : ""}
           />
         </div>
         <div
@@ -215,6 +274,7 @@ const Address = () => {
             className="field-inp"
             id="phone-number"
             onChange={(e) => handlePhone(e)}
+            defaultValue={props?.boolean ? props?.address[0]?.mobileNumber : ""}
           />
         </div>
       </div>
@@ -245,6 +305,7 @@ const Address = () => {
             className="field-inp"
             id="pincode"
             onChange={(e) => handlePincode(e)}
+            defaultValue={props?.boolean ? props?.address[0]?.pinCode : ""}
           />
         </div>
         <div
@@ -273,6 +334,7 @@ const Address = () => {
             className="field-two-inp"
             id="address"
             onChange={(e) => handleAddress(e)}
+            defaultValue={props?.boolean ? props?.address[0]?.address : ""}
           />
         </div>
         <div
@@ -301,6 +363,7 @@ const Address = () => {
             className="field-inp"
             id="locality"
             onChange={(e) => handleLocality(e)}
+            defaultValue={props?.boolean ? props?.address[0]?.locality : ""}
           />
         </div>
         <div
@@ -329,6 +392,7 @@ const Address = () => {
             className="field-two-inp"
             id="landmark"
             onChange={(e) => handleLandmark(e)}
+            defaultValue={props?.boolean ? props?.address[0]?.landmark : ""}
           />
         </div>
       </div>
@@ -359,6 +423,9 @@ const Address = () => {
             className="field-three-inp"
             id="city"
             onChange={(e) => handleCity(e)}
+            defaultValue={
+              props?.boolean ? props?.address[0]?.cityDistrictTown : ""
+            }
           />
         </div>
         <div
@@ -386,6 +453,7 @@ const Address = () => {
             className="field-three-inp"
             id="state"
             onChange={(e) => handleState(e)}
+            defaultValue={props?.boolean ? props?.address[0]?.state : ""}
           >
             <option value=""></option>
             <option value="Andhra Pradesh">Andhra Pradesh</option>
@@ -458,6 +526,9 @@ const Address = () => {
             className="field-four-inp"
             id="alternatephonenumber"
             onChange={(e) => handleAlternate(e)}
+            defaultValue={
+              props?.boolean ? props?.address[0]?.alternatePhone : ""
+            }
           />
         </div>
         <div
@@ -485,6 +556,7 @@ const Address = () => {
             className="field-four-inp"
             id="type"
             onChange={(e) => handleType(e)}
+            defaultValue={props?.boolean ? props?.address[0]?.addressType : ""}
           >
             <option value=""></option>
             <option value="Home">Home (7am - 9pm delivery)</option>
@@ -495,7 +567,11 @@ const Address = () => {
         </div>
       </div>
       <div className="add-address-btn-container">
-        <button onClick={() => handleOnAddAddress()}>Add address</button>
+        {props?.boolean ? (
+          <button onClick={() => handleOnEditAddress()}>Save</button>
+        ) : (
+          <button onClick={() => handleOnAddAddress()}>Add address</button>
+        )}
       </div>
     </div>
   );

@@ -17,6 +17,7 @@ export const Profile = () => {
   const [addressFieldId, setAddressFieldId] = useState("");
   const [addressData, setAddressData] = useState();
   const [addAddress, setAddAddress] = useState(false);
+  const [editAddress, setEditAddress] = useState();
 
   const navigate = useNavigate();
 
@@ -25,6 +26,17 @@ export const Profile = () => {
     axios.get("/user/getaddress").then((x) => {
       setAddressData(x.data.userAddress.address);
     });
+  };
+
+  const handleSelectedAdd = (e) => {
+    const addressToEdit = addressData?.filter((x) => {
+      return e.target.id === x?._id;
+    });
+    setEditAddress(addressToEdit);
+  };
+
+  const editSelectedAdd = () => {
+    setAddAddress(true);
   };
 
   const handleOrders = () => {
@@ -105,6 +117,20 @@ export const Profile = () => {
             ></div>
           </div>
           <Address />
+        </div>
+      )}
+      {addAddress && editAddress !== undefined && (
+        <div className="addAddress-container">
+          <div className="address-field-close-btn-container">
+            <div
+              className="address-field-close-btn"
+              onClick={() => {
+                setAddAddress(false);
+                setEditAddress();
+              }}
+            ></div>
+          </div>
+          <Address address={editAddress} boolean={true} />
         </div>
       )}
       {userInfo && (
@@ -207,9 +233,7 @@ export const Profile = () => {
                                 type="radio"
                                 name="address"
                                 id={x?._id}
-                                onChange={(e) => {
-                                  console.log(e.target.id);
-                                }}
+                                onChange={(e) => handleSelectedAdd(e)}
                               />
                               <div>
                                 <section>{x?.name}</section>
@@ -242,7 +266,17 @@ export const Profile = () => {
               style={{ animationDelay: "2.3s" }}
               id="buttons-for-user-details-pop-up"
             >
-              {/* <button>Edit</button> */}
+              {editAddress !== undefined ? (
+                <button onClick={() => editSelectedAdd()}>Edit address</button>
+              ) : (
+                <button
+                  onClick={() => {
+                    setAddAddress(true);
+                  }}
+                >
+                  Add address
+                </button>
+              )}
               <button onClick={() => handleSignOut()}>Sign Out</button>
             </div>
           </div>
