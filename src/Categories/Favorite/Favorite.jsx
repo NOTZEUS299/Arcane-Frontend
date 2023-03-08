@@ -101,7 +101,7 @@ export const Favorite = () => {
   }, []);
 
   return (
-    <div>
+    <div className="fav-page-main-container">
       {!loader && <Loader />}
       {loading && <Loader />}
       <Header />

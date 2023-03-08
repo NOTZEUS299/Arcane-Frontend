@@ -40,7 +40,7 @@
 .lstnvbr li:hover::after,
 .lstnvbrrght li:hover::after {
     content: "";
-    height: 2px;
+    height: 0.1rem;
     background-color: black;
     position: absolute;
     bottom: 4%;
@@ -53,7 +53,7 @@
 .lstnvbr li:hover::before,
 .lstnvbrrght li:hover::before {
     content: "";
-    height: 2px;
+    height: 0.1rem;
     background-color: black;
     position: absolute;
     bottom: 4%;
