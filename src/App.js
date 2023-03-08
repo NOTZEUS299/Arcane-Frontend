@@ -25,6 +25,8 @@ import { WomenTop } from "./Categories/Women/Sub Categories/Top/WomenTop";
 import { WomenBottom } from "./Categories/Women/Sub Categories/Bottom/WomenBottom";
 import { WomenFootwear } from "./Categories/Women/Sub Categories/Footwear/WomenFootwear";
 import { WomenAccessories } from "./Categories/Women/Sub Categories/Accessories/WomenAccessories";
+import Order from "./utilities/order/Order";
+import ProtectOrders from "./utilities/order/protected/ProtectOrders";
 
 function App() {
   const [, setData] = useAtom(ProductData);
@@ -79,6 +81,14 @@ function App() {
           }
         />
         <Route path="/product/:id" element={<ViewProduct />} />
+        <Route
+          path="/pay-select/:id"
+          element={
+            <ProtectOrders>
+              <Order />
+            </ProtectOrders>
+          }
+        />
       </Routes>
     </>
   );

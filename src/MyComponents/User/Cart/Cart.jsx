@@ -7,7 +7,7 @@ import {
   axiosIntance as axios,
   generatePublicUrl as imagePath,
 } from "../../Base-Url/AxiosInstance";
-import { ProductData } from "../../../helper/Jotai";
+import { orderData, ProductData } from "../../../helper/Jotai";
 import { Loader } from "../../Loader/Loader";
 import { BiRupee } from "react-icons/bi";
 import { GiBulletImpacts } from "react-icons/gi";
@@ -15,6 +15,7 @@ import "./cart.css";
 import { RiShoppingCartLine } from "react-icons/ri";
 import { BsFillCaretRightFill } from "react-icons/bs";
 import { TbShoppingCartOff } from "react-icons/tb";
+import { useNavigate } from "react-router-dom";
 
 export const Cart = () => {
   const [loader, setLoader] = useState();
@@ -23,6 +24,10 @@ export const Cart = () => {
   const [billDetails, setBillDetails] = useState(false);
   const [functionCall, setfunctionCall] = useState(false);
   const [total, setTotal] = useState(0);
+  const [orderArray] = useState([]);
+  const [, setOrder] = useAtom(orderData);
+
+  const navigate = useNavigate();
 
   const removeCartItem = async (id) => {
     const payload = {
@@ -43,6 +48,57 @@ export const Cart = () => {
     setTimeout(() => {
       setTotal(sum);
     }, 1);
+  };
+
+  function generateId() {
+    const digits = "0123456789";
+    let id = "";
+
+    // Generate 10 random digits
+    while (id.length < 10) {
+      const randomDigit = digits[Math.floor(Math.random() * digits.length)];
+      if (id.indexOf(randomDigit) === -1) {
+        // Add the digit to the ID if it's not already there
+        id += randomDigit;
+      }
+    }
+
+    return id;
+  }
+
+  const handleOrders = async (x) => {
+    const navigationId = generateId();
+
+    setLoader(true);
+
+    for (let index = 0; index < cartDetails?.length; index++) {
+      const element = cartDetails[index];
+      console.log(element);
+      orderArray?.push({
+        productId: element?._id,
+        payablePrice: element?.price * element?.qty,
+        purchasedQty: element?.qty,
+      });
+    }
+
+    setOrder([{ itemArray: orderArray }, { id: navigationId }]);
+    navigate(`/pay-select/${navigationId}`);
+  };
+
+  const handleOrder = (x) => {
+    const navigationId = generateId();
+
+    setLoader(true);
+
+    const itemArray = [
+      {
+        productId: x?._id,
+        payablePrice: x?.price * x?.qty,
+        purchasedQty: x?.qty,
+      },
+    ];
+    setOrder([{ itemArray: itemArray }, { id: navigationId }]);
+    navigate(`/pay-select/${navigationId}`);
   };
 
   useEffect(() => {
@@ -70,6 +126,7 @@ export const Cart = () => {
   return (
     <div style={{ background: "#e0e0e0" }}>
       {loader && <Loader />}
+      {}
       <Header />
       {cartDetails?.length === 0 && (
         <div className="cart-container-if-data-is-null">
@@ -147,7 +204,7 @@ export const Cart = () => {
                       <option value="10">10</option>
                     </select>
                     <div className="cart-content-buttons">
-                      <button> Buy</button>
+                      <button onClick={() => handleOrder(x)}> Buy</button>
                       <button onClick={() => removeCartItem(x._id)}>
                         {" "}
                         Remove
@@ -230,7 +287,7 @@ export const Cart = () => {
               <span>{total}</span>
             )}
           </h3>
-          <button>Proceed to Pay</button>
+          <button onClick={() => handleOrders()}>Proceed to Pay</button>
         </div>
       </div>
     </div>

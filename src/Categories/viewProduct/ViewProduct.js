@@ -55,8 +55,6 @@ export const ViewProduct = () => {
     setFavData(favArray);
   }
 
-  console.log(favData);
-
   const removeFavOnClick = (id) => {
     setLoad(true);
     const favId = removeFav.filter((x) => {

@@ -1,7 +1,7 @@
 import React from "react";
 import { Header } from "../../../../Header";
 import { useAtom } from "jotai";
-import { ProductData } from "../../../../helper/Jotai";
+import { orderData, ProductData } from "../../../../helper/Jotai";
 import {
   axiosIntance as axios,
   generatePublicUrl as imagePath,
