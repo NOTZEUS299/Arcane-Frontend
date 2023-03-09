@@ -11,7 +11,7 @@ const Order = () => {
 
   useEffect(() => {
     axios.get("/user/getaddress").then((x) => {
-      setAddress(x);
+      setAddress(x?.data?.userAddress?.address);
     });
   }, []);
 
@@ -34,6 +34,7 @@ const Order = () => {
         </h1>
       </div>
       <div className="checkout-page-container">
+        <div className="checkout-process-range">df</div>
         <div className="checkout-process-panel">
           <div className="checkout-address-container">
             <div className="address-select-div-heading">
@@ -45,26 +46,36 @@ const Order = () => {
               ) : (
                 <div>
                   {address.length > 0 &&
-                    address.map((x) => {
+                    address.map((x, i) => {
                       return (
-                        <div className="address-field-addresses">
-                          <div>
-                            <section>{x?.name}</section>
-                            <section>
-                              <span>{x?.address},</span>
-                              <span>{x?.locality}</span>
-                            </section>
-                            <section>
-                              <span>{x?.cityDistrictTown} ,</span>
-                              <span>{x?.state} </span>
-                              <span>{x?.pinCode}</span>
-                            </section>
-                            India
-                            <section>
-                              Phone :<span>{x?.mobileNumber},</span>
-                              <span> {x?.alternatePhone}</span>
-                            </section>
-                            <section>{x?.addressType}</section>
+                        <div className="address-field-addresses" key={i}>
+                          <div className="address-check-button">
+                            <input
+                              type={"radio"}
+                              name="select-Address"
+                              className="select-address-input-field-radio"
+                              id={`${x?._id}`}
+                            />
+                          </div>
+                          <div className="address-content-div">
+                            <label htmlFor={`${x?._id}`}>
+                              <section>{x?.name}</section>
+                              <section>
+                                <span>{x?.address},</span>
+                                <span>{x?.locality}</span>
+                              </section>
+                              <section>
+                                <span>{x?.cityDistrictTown} ,</span>
+                                <span>{x?.state} </span>
+                                <span>{x?.pinCode}</span>
+                              </section>
+                              India
+                              <section>
+                                Phone :<span>{x?.mobileNumber},</span>
+                                <span> {x?.alternatePhone}</span>
+                              </section>
+                              <section>{x?.addressType}</section>
+                            </label>
                           </div>
                         </div>
                       );
@@ -77,7 +88,14 @@ const Order = () => {
             <div className="payment-select-div-heading">
               <h3>2 Select payment method</h3>
             </div>
-            <div className="payment-type-select-div"></div>
+            <div className="payment-type-select-div">
+              <div>
+                <button className="select-payment-hover-effect">CARD</button>
+              </div>
+              <div>
+                <button className="select-payment-hover-effect">COD</button>
+              </div>
+            </div>
           </div>
           <div className="checkout-order-status">
             <div className="order-status-div-heading">
