@@ -4,18 +4,21 @@ import { orderData } from "../../helper/Jotai";
 import "./order.css";
 import mainLogo from "../../images/mainlogo.png";
 import { axiosIntance as axios } from "../../MyComponents/Base-Url/AxiosInstance";
+import visaLogo from "../../images/card background/visaLogo.png";
+import cheapSticker from "../../images/card background/cheapSticker.jpg";
 
 const Order = () => {
   const [order] = useAtom(orderData);
   const [address, setAddress] = useState();
+  const [card, setCard] = useState(false);
+
+  // /^\d+$/
 
   useEffect(() => {
     axios.get("/user/getaddress").then((x) => {
       setAddress(x?.data?.userAddress?.address);
     });
   }, []);
-
-  console.log(address);
 
   return (
     <div className="order-page-main-container">
@@ -89,13 +92,74 @@ const Order = () => {
               <h3>2 Select payment method</h3>
             </div>
             <div className="payment-type-select-div">
-              <div>
-                <button className="select-payment-hover-effect">CARD</button>
+              <div
+                id={`card-button-${card}`}
+                onClick={() => {
+                  setCard(true);
+                }}
+              >
+                <button
+                  className="select-payment-hover-effect"
+                  id={`disabling-hover-effect-${card}`}
+                >
+                  CARD
+                </button>
               </div>
-              <div>
+              <div
+                onClick={() => {
+                  setCard(false);
+                }}
+              >
                 <button className="select-payment-hover-effect">COD</button>
               </div>
             </div>
+            {card && (
+              <div className="card-payment-div-container">
+                <div className="card-showcase-div">
+                  <div className="card-front-showcase">
+                    <div className="visa-logo-for-frontCard">
+                      <div className="chip-sticker-cardFront">
+                        <img src={cheapSticker} alt="" />
+                      </div>
+                      <div className="visa-logo-cardFront">
+                        <img src={visaLogo} alt="" />
+                      </div>
+                      <div className="card-number-cardFront">
+                        <input type="text" defaultValue={"4029"} />
+                        <input type="text" defaultValue={"8511"} />
+                        <input type="text" defaultValue={"0786"} />
+                        <input type="text" defaultValue={"9591"} />
+                      </div>
+                      <div className="card-holder-cardFront">
+                        <h6>CARD HOLDER</h6>
+                        <input type="text"  defaultValue={"darshan patel"}  />
+                      </div>
+                      <div className="card-expiry-cardFront">
+                        <h6>EXPIRES</h6>
+                        <div className="exp-input-field">
+                          <input type="text" defaultValue={"12"} />/<input type="text" defaultValue={"25"} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="card-back-showcase">
+                    <div className="card-magneticLine-cardBack"></div>
+                    <div className="card__secret">
+                      <p className="card__secret--last" contentEditable={false}>
+                        420
+                      </p>
+                    </div>
+                    <div className="chip-sticker-cardBack">
+                      <img src={cheapSticker} alt="" />
+                    </div>
+                    <div className="visa-logo-cardBack">
+                      <img src={visaLogo} alt="" />
+                    </div>
+                  </div>
+                </div>
+                <div className="card-payment-intructions">(*This is jus for showcase.)</div>
+              </div>
+            )}
           </div>
           <div className="checkout-order-status">
             <div className="order-status-div-heading">

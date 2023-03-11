@@ -2,7 +2,6 @@
 
 .order-page-main-container {
   background: #e0e0e0;
-  height: 100vh;
 }
 
 .checkout-header {
@@ -66,6 +65,7 @@
   border-radius: 0.3rem;
   box-shadow: 0.3rem 0.3rem 0.6rem #5a5a5a, -0.3rem -0.3rem 0.6rem #ffffff;
   background: #fff;
+  transition: all 0.5s;
 }
 
 .checkout-order-summary {
@@ -119,8 +119,8 @@
 
 .checkout-payment-method-container {
   position: relative;
-  height: 20vh;
-  display: flex;
+  /* height: 20vh; */
+  /* display: flex; */
   justify-content: center;
   align-items: center;
 }
@@ -142,6 +142,9 @@
   justify-content: space-around;
   align-items: center;
   width: 45rem;
+  margin: auto;
+  padding-top: 3.8rem;
+  padding-bottom: 3.8rem;
 }
 
 .payment-type-select-div > div {
@@ -157,18 +160,18 @@
 }
 
 .payment-type-select-div > div > button {
-    width: 5rem;
-    height: 1rem;
-    border: 0;
-    background: #5a5a5a;
-    color: #e0e0e0;
-    position: absolute;
-    left: 7.5rem;
-    top: 0.5rem;
-    display: flex;
-    justify-content: center;
-    cursor: pointer;
-  }
+  width: 5rem;
+  height: 1rem;
+  border: 0;
+  background: #5a5a5a;
+  color: #e0e0e0;
+  position: absolute;
+  left: 7.5rem;
+  top: 0.5rem;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
 
 .payment-type-select-div > div:hover {
   filter: drop-shadow(0 0 white);
@@ -178,6 +181,286 @@
   color: #5a5a5a;
   background: transparent;
   transition: all 0.1s;
+}
+
+#card-button-true {
+  filter: drop-shadow(-0.5rem 0.5rem #5a5a5a);
+  transition: all 0.1s;
+}
+
+#disabling-hover-effect-true {
+  background: #5a5a5a;
+  color: #e0e0e0;
+}
+
+.card-payment-div-container {
+  width: 100%;
+  height: 250px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.card-showcase-div {
+  position: relative;
+  transform-style: preserve-3d;
+  -webkit-transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -moz-transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -ms-transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -o-transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  width: 320px;
+  height: 190px;
+}
+
+.card-payment-div-container:hover .card-showcase-div {
+  transform: rotateY(180deg);
+}
+
+.card-front-showcase {
+  background: #000;
+  width: 320px;
+  height: 190px;
+  border-radius: 8px;
+  background: url("../../images/card\ background/cardBg1.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  perspective: 1000px;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  padding: 18px;
+}
+
+.card-back-showcase {
+  background: #000;
+  width: 320px;
+  height: 190px;
+  border-radius: 8px;
+  background: url("../../images/card\ background/cardBg1.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: rotateY(180deg);
+  position: absolute;
+  perspective: 1000px;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  padding: 18px;
+}
+
+.chip-sticker-cardFront {
+  width: 40px;
+  height: 30px;
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.chip-sticker-cardFront > img {
+  width: 100%;
+  height: 30px;
+  filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.437));
+}
+
+.visa-logo-cardFront {
+  width: 50px;
+  position: absolute;
+  top: 18px;
+  right: 18px;
+}
+
+.visa-logo-cardFront > img {
+  width: 100%;
+  filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.437));
+}
+
+.card-number-cardFront {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  word-spacing: 4px;
+  font-size: 20px;
+  letter-spacing: 2px;
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 60px;
+}
+
+.card-number-cardFront > input {
+  width: 64px;
+  background: transparent;
+  font-size: 20px;
+  color: gray;
+  text-align: center;
+  font-weight: 500;
+  text-transform: uppercase;
+  background: url(../../images/card\ background/textBg.jpg);
+  background-size: contain;
+  -webkit-background-clip: text;
+  color: transparent;
+  border: 0;
+  letter-spacing: 2px;
+}
+
+.card-holder-cardFront {
+  position: absolute;
+  bottom: 18px;
+  left: 18px;
+}
+
+.card-holder-cardFront > h6 {
+  background: url(../../images/card\ background/textBg.jpg);
+  background-position: center;
+  background-size: cover;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.card-holder-cardFront > input {
+  background: url(../../images/card\ background/textBg.jpg);
+  background-position: center;
+  background-size: cover;
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-top: 5px;
+  font-size: 16px;
+  line-height: 18px;
+  border: 0;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.card-expiry-cardFront {
+  position: absolute;
+  bottom: 18px;
+  right: 18px;
+}
+
+.card-expiry-cardFront > h6 {
+  background: url(../../images/card\ background/textBg.jpg);
+  background-position: center;
+  background-size: cover;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-align: right;
+}
+
+.exp-input-field {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  width: 51px;
+  background: url(../../images/card\ background/textBg.jpg);
+  background-position: center;
+  background-size: cover;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 16px;
+  line-height: 18px;
+  border: 0;
+  letter-spacing: 1px;
+}
+
+.exp-input-field > input {
+  width: 25px;
+  background: url(../../images/card\ background/textBg.jpg);
+  background-position: center;
+  background-size: cover;
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-top: 5px;
+  font-size: 16px;
+  line-height: 18px;
+  border: 0;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.card-back-showcase {
+  position: relative;
+}
+
+.card-magneticLine-cardBack {
+  width: 320px;
+  height: 38px;
+  position: absolute;
+  left: 0;
+  background: #202020;
+  margin-top: 5px;
+}
+
+.card__secret--last {
+  color: #303030;
+  text-align: right;
+  margin: 0;
+  font-size: 14px;
+}
+
+.card__secret {
+  padding: 5px 12px;
+  background-color: #fff;
+  position: relative;
+  margin-top: 60px;
+}
+
+.card__secret:before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  height: calc(100% + 6px);
+  width: calc(100% - 42px);
+  border-radius: 4px;
+  background: repeating-linear-gradient(
+    45deg,
+    #ededed,
+    #ededed 5px,
+    #f9f9f9 5px,
+    #f9f9f9 10px
+  );
+}
+
+.chip-sticker-cardBack {
+  width: 40px;
+  height: 30px;
+  position: absolute;
+  bottom: 18px;
+  left: 18px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.chip-sticker-cardBack > img {
+  width: 100%;
+  height: 30px;
+  filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.437));
+}
+
+.visa-logo-cardBack {
+  width: 50px;
+  position: absolute;
+  bottom: 18px;
+  right: 18px;
+}
+
+.visa-logo-cardBack > img {
+  width: 100%;
+  filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.437));
+}
+
+.card-payment-intructions {
+  width: 50%;
+  height: 190px;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
 }
 
 /* //////////////////////////////////////////////Animation//////////////////////////////////////// */
