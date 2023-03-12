@@ -164,6 +164,7 @@ export const Temp = () => {
         ],
         paymentStatus: "pending",
         paymentType: "cod",
+        addressId: "6409c1f751178f8c00033b66",
       },
     },
     {
