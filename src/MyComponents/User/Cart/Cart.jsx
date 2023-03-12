@@ -81,7 +81,7 @@ export const Cart = () => {
       });
     }
 
-    setOrder([{ itemArray: orderArray }, { id: navigationId }]);
+    setOrder([{ itemArray: orderArray }, { id: navigationId }, {total: total}]);
     navigate(`/pay-select/${navigationId}`);
   };
 
@@ -97,7 +97,7 @@ export const Cart = () => {
         purchasedQty: x?.qty,
       },
     ];
-    setOrder([{ itemArray: itemArray }, { id: navigationId }]);
+    setOrder([{ itemArray: itemArray }, { id: navigationId }, {total: x?.price * x?.qty}]);
     navigate(`/pay-select/${navigationId}`);
   };
 

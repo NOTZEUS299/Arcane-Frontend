@@ -68,14 +68,6 @@
   transition: all 0.5s;
 }
 
-.checkout-order-summary {
-  width: 30%;
-  height: max-content;
-  margin-left: 1%;
-  background: #fff;
-  box-shadow: 0.3rem 0.3rem 0.6rem #5a5a5a, -0.3rem -0.3rem 0.6rem #ffffff;
-}
-
 .checkout-address-container {
   position: relative;
 }
@@ -288,7 +280,6 @@
   margin-bottom: 20px;
   margin-top: 60px;
 }
-
 .card-number-cardFront > input {
   width: 64px;
   background: transparent;
@@ -461,6 +452,131 @@
   display: flex;
   /* justify-content: center; */
   align-items: center;
+}
+
+.checkout-order-status {
+  position: relative;
+  height: 20vh;
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+}
+
+.order-status-div-heading {
+  position: absolute;
+  top: 5%;
+  left: 2%;
+}
+
+.order-status-div-heading > h3 {
+  color: #353535;
+  font-size: 1.1rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+.order-status-view-div {
+  color: #000;
+  font-size: 1rem;
+  font-family: "Josefin Sans", sans-serif;
+  /* padding-top: 5%;
+  padding-left: 15%; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+}
+
+.checkout-order-summary {
+  width: 30%;
+  height: max-content;
+  margin-left: 1%;
+  background: #fff;
+  box-shadow: 0.3rem 0.3rem 0.6rem #5a5a5a, -0.3rem -0.3rem 0.6rem #ffffff;
+  padding: 0.5rem 1.5rem;
+  position: sticky;
+  top: 0.5rem;
+}
+
+.order-summary-heading > h2 {
+  color: #353535;
+  font-size: 2rem;
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 0.5rem;
+}
+
+.items-summary > p {
+  color: #000;
+  font-size: 1.5rem;
+  font-family: "Josefin Sans", sans-serif;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.2rem 0;
+}
+
+.order-bill > p {
+  width: 100%;
+  color: #000;
+  font-size: 1.5rem;
+  font-family: "Josefin Sans", sans-serif;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.2rem 0;
+}
+
+#total-to-pay {
+  border-top: 0.01rem solid #5a5a5a;
+  padding-top: 0.1rem;
+}
+
+.left-side-of-order-summary {
+  position: relative;
+}
+
+.rupee-symbol-order-page {
+  position: absolute;
+  left: -1.3rem;
+  top: -0.05rem;
+  color: #5a5a5a;
+}
+
+.order-bill {
+  border-bottom: 0.01rem solid #5a5a5a;
+}
+
+.place-order-btn-checkoutPage {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+.place-order-btn-checkoutPage > button {
+  width: 100%;
+  font-size: 1rem;
+  color: #474747;
+  background: #4747470a;
+  padding: 0.25rem 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #47474786;
+  display: inline;
+  cursor: pointer;
+  transition: 0.2s all;
+}
+
+.place-order-btn-checkoutPage > button:hover {
+  color: #353535;
+  width: 99%;
+  box-shadow: 0.05rem 0.05rem 0.1rem #474747;
+}
+
+.place-order-btn-checkoutPage > button:active {
+  color: #353535;
+  width: 99%;
+  box-shadow: -0.05rem -0.05rem 0.1rem #474747;
 }
 
 /* //////////////////////////////////////////////Animation//////////////////////////////////////// */

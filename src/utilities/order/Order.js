@@ -6,18 +6,36 @@ import mainLogo from "../../images/mainlogo.png";
 import { axiosIntance as axios } from "../../MyComponents/Base-Url/AxiosInstance";
 import visaLogo from "../../images/card background/visaLogo.png";
 import cheapSticker from "../../images/card background/cheapSticker.jpg";
+import { BiRupee } from "react-icons/bi";
 
 const Order = () => {
   const [order] = useAtom(orderData);
   const [address, setAddress] = useState();
   const [card, setCard] = useState(false);
+  const [shipping, setShipping] = useState();
+  const [payment, setPayment] = useState();
 
   // /^\d+$/
+
+  const total = order[2]?.total;
+
+  const handleAddOrder = () => {
+    const payload = {
+      totalAmount: total,
+      items: order[0]?.itemArray,
+      paymentStatus: "completed",
+      paymentType: payment,
+      addressId: address[shipping]?._id
+    }
+    axios.post("/addOrder", payload).then((x) => {
+      console.log(x);
+    })
+  }
 
   useEffect(() => {
     axios.get("/user/getaddress").then((x) => {
       setAddress(x?.data?.userAddress?.address);
-    });
+    })
   }, []);
 
   return (
@@ -58,6 +76,9 @@ const Order = () => {
                               name="select-Address"
                               className="select-address-input-field-radio"
                               id={`${x?._id}`}
+                              onChange={(e) => {
+                                setShipping(i);
+                              }}
                             />
                           </div>
                           <div className="address-content-div">
@@ -96,6 +117,7 @@ const Order = () => {
                 id={`card-button-${card}`}
                 onClick={() => {
                   setCard(true);
+                  setPayment("card")
                 }}
               >
                 <button
@@ -108,9 +130,10 @@ const Order = () => {
               <div
                 onClick={() => {
                   setCard(false);
+                  setPayment("cod")
                 }}
               >
-                <button className="select-payment-hover-effect">COD</button>
+                <button className="select-payment-hover-effect" >COD</button>
               </div>
             </div>
             {card && (
@@ -132,12 +155,13 @@ const Order = () => {
                       </div>
                       <div className="card-holder-cardFront">
                         <h6>CARD HOLDER</h6>
-                        <input type="text"  defaultValue={"darshan patel"}  />
+                        <input type="text" defaultValue={"darshan patel"} />
                       </div>
                       <div className="card-expiry-cardFront">
                         <h6>EXPIRES</h6>
                         <div className="exp-input-field">
-                          <input type="text" defaultValue={"12"} />/<input type="text" defaultValue={"25"} />
+                          <input type="text" defaultValue={"12"} />/
+                          <input type="text" defaultValue={"25"} />
                         </div>
                       </div>
                     </div>
@@ -157,7 +181,9 @@ const Order = () => {
                     </div>
                   </div>
                 </div>
-                <div className="card-payment-intructions">(*This is jus for showcase.)</div>
+                <div className="card-payment-intructions">
+                  (*This is jus for showcase.)
+                </div>
               </div>
             )}
           </div>
@@ -165,10 +191,62 @@ const Order = () => {
             <div className="order-status-div-heading">
               <h3>3 Items and delivery</h3>
             </div>
-            <div className="order-status-view-div"></div>
+            <div className="order-status-view-div">
+              <p>
+                Your order is expected to delivered within in 7 days, stay tuned
+                with our latest collections and discounts.
+              </p>
+              {shipping !== undefined && (
+                <p>
+                  shipping to {address[shipping]?.name},{" "}
+                  {address[shipping]?.address},{" "}
+                  {address[shipping]?.cityDistrictTown},{" "}
+                  {address[shipping]?.state}.
+                </p>
+              )}
+            </div>
           </div>
         </div>
-        <div className="checkout-order-summary">cv</div>
+        <div className="checkout-order-summary">
+          <div className="order-summary-heading">
+            <h2>Bill:</h2>
+          </div>
+          <div className="items-summary">
+            <p>
+              <span>order (items):</span>
+              <span className="left-side-of-order-summary">
+                <BiRupee className="rupee-symbol-order-page" />
+                {total}
+              </span>
+            </p>
+          </div>
+          <div className="order-bill">
+            <p>
+              <span>charges:</span>
+              <span className="left-side-of-order-summary">
+                <BiRupee className="rupee-symbol-order-page" />
+                40
+              </span>
+            </p>
+            <p>
+              <span>offers (applicable):</span>
+              <span className="left-side-of-order-summary">
+                <BiRupee className="rupee-symbol-order-page" />
+                -40
+              </span>
+            </p>
+            <p>
+              <span>to pay:</span>
+              <span className="left-side-of-order-summary" id="total-to-pay">
+                <BiRupee className="rupee-symbol-order-page" />
+                {total}
+              </span>
+            </p>
+          </div>
+          <div className="place-order-btn-checkoutPage">
+            <button onClick={() => handleAddOrder()}>Place order</button>
+          </div>
+        </div>
       </div>
     </div>
   );
