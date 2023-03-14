@@ -1,19 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { useAtom } from "jotai";
-import { orderData } from "../../helper/Jotai";
+import { orderData, ProductData } from "../../helper/Jotai";
 import "./order.css";
 import mainLogo from "../../images/mainlogo.png";
-import { axiosIntance as axios } from "../../MyComponents/Base-Url/AxiosInstance";
+import {
+  axiosIntance as axios,
+  generatePublicUrl,
+} from "../../MyComponents/Base-Url/AxiosInstance";
 import visaLogo from "../../images/card background/visaLogo.png";
 import cheapSticker from "../../images/card background/cheapSticker.jpg";
 import { BiRupee } from "react-icons/bi";
+import { BsFillPatchCheckFill } from "react-icons/bs";
 
 const Order = () => {
   const [order] = useAtom(orderData);
+  const [productData] = useAtom(ProductData);
   const [address, setAddress] = useState();
   const [card, setCard] = useState(false);
   const [shipping, setShipping] = useState();
   const [payment, setPayment] = useState();
+  const [summary, setSummary] = useState({ show: false, exit: false });
 
   // /^\d+$/
 
@@ -25,18 +31,20 @@ const Order = () => {
       items: order[0]?.itemArray,
       paymentStatus: "completed",
       paymentType: payment,
-      addressId: address[shipping]?._id
-    }
+      addressId: address[shipping]?._id,
+    };
     axios.post("/addOrder", payload).then((x) => {
       console.log(x);
-    })
-  }
+    });
+  };
 
   useEffect(() => {
     axios.get("/user/getaddress").then((x) => {
       setAddress(x?.data?.userAddress?.address);
-    })
+    });
   }, []);
+
+  console.log(summary);
 
   return (
     <div className="order-page-main-container">
@@ -55,7 +63,48 @@ const Order = () => {
         </h1>
       </div>
       <div className="checkout-page-container">
-        <div className="checkout-process-range">df</div>
+        <div className="checkout-process-range">
+          <div
+            className="squares-for-process-validation"
+            id="square-one-for-address"
+          >
+            <h3 className="h3-for-processing-square">
+              {shipping !== undefined ? <BsFillPatchCheckFill /> : "1"}
+            </h3>
+          </div>
+          <div
+            className="div-showing-range-between-squares"
+            id="range-from-add-to-payment"
+          >
+            <div
+              id={shipping !== undefined ? "connect-squares-with-range" : ""}
+            ></div>
+          </div>
+          <div
+            className="squares-for-process-validation"
+            id="square-two-for-payment"
+          >
+            <h3 className="h3-for-processing-square">
+              {payment !== undefined ? <BsFillPatchCheckFill /> : "2"}
+            </h3>
+          </div>
+          <div
+            className="div-showing-range-between-squares"
+            id="range-from-payment-to-confirmation"
+          >
+            <div
+              id={payment !== undefined ? "connect-squares-with-range" : ""}
+            ></div>
+          </div>
+          <div
+            className="squares-for-process-validation"
+            id="square-three-for-confirmation"
+          >
+            <h3 className="h3-for-processing-square">
+              {payment !== undefined ? <BsFillPatchCheckFill /> : "3"}
+            </h3>
+          </div>
+        </div>
         <div className="checkout-process-panel">
           <div className="checkout-address-container">
             <div className="address-select-div-heading">
@@ -117,7 +166,7 @@ const Order = () => {
                 id={`card-button-${card}`}
                 onClick={() => {
                   setCard(true);
-                  setPayment("card")
+                  setPayment("card");
                 }}
               >
                 <button
@@ -130,10 +179,10 @@ const Order = () => {
               <div
                 onClick={() => {
                   setCard(false);
-                  setPayment("cod")
+                  setPayment("cod");
                 }}
               >
-                <button className="select-payment-hover-effect" >COD</button>
+                <button className="select-payment-hover-effect">COD</button>
               </div>
             </div>
             {card && (
@@ -192,9 +241,9 @@ const Order = () => {
               <h3>3 Items and delivery</h3>
             </div>
             <div className="order-status-view-div">
-              <p>
-                Your order is expected to delivered within in 7 days, stay tuned
-                with our latest collections and discounts.
+              <p style={{ padding: "0 9rem" }}>
+                Your order is expected to delivered within in 7 days, place your
+                order to confirm.
               </p>
               {shipping !== undefined && (
                 <p>
@@ -204,6 +253,7 @@ const Order = () => {
                   {address[shipping]?.state}.
                 </p>
               )}
+              <p>Stay tuned with our latest collections and discounts.</p>
             </div>
           </div>
         </div>
@@ -213,13 +263,66 @@ const Order = () => {
           </div>
           <div className="items-summary">
             <p>
-              <span>order (items):</span>
+              <span
+                onClick={() => {
+                  summary?.show
+                    ? setSummary({ ...summary, exit: true, show: true }) ||
+                      setTimeout(() => {
+                        setSummary({ ...summary, show: false, exit: false });
+                      }, 1000)
+                    : setSummary({ ...summary, exit: false, show: true });
+                }}
+                className={`summary-div-active-${summary?.show}`}
+              >
+                order ({order[0]?.itemArray?.length} item):
+              </span>
               <span className="left-side-of-order-summary">
                 <BiRupee className="rupee-symbol-order-page" />
                 {total}
               </span>
             </p>
           </div>
+          {summary?.show && (
+            <div
+              className="summary-product-main-contianer"
+              id={`summary-exit-${summary?.exit}`}
+            >
+              {summary?.show &&
+                order[0]?.itemArray?.map((x, i) => {
+                  const summaryData = productData?.filter((j) => {
+                    return x?.productId === j?._id;
+                  });
+                  return (
+                    <div className="summary-product-container" key={i}>
+                      <div className="summary-product-image-container">
+                        <img
+                          src={generatePublicUrl(
+                            summaryData[0]?.productPictures[0]?.img
+                          )}
+                          alt=""
+                          className="summary-product-image"
+                        />
+                      </div>
+                      <div className="summary-product-content">
+                        <h5 className="summary-product-name">
+                          {summaryData[0]?.name}
+                        </h5>
+                        <p className="summary-product-quantity">
+                          quantity: {x?.purchasedQty}
+                        </p>
+                        <p className="summary-product-totalAmount">
+                          payable:{" "}
+                          <BiRupee className="rupee-symbol-for-summary-product" />
+                          <span className="product-price-for-summary-product">
+                            {x?.payablePrice}
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
+            </div>
+          )}
           <div className="order-bill">
             <p>
               <span>charges:</span>
