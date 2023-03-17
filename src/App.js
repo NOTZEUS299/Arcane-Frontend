@@ -27,6 +27,7 @@ import { WomenFootwear } from "./Categories/Women/Sub Categories/Footwear/WomenF
 import { WomenAccessories } from "./Categories/Women/Sub Categories/Accessories/WomenAccessories";
 import Order from "./utilities/order/Order";
 import ProtectOrders from "./utilities/order/protected/ProtectOrders";
+import Orders from "./MyComponents/User/userOrders/Orders";
 
 function App() {
   const [, setData] = useAtom(ProductData);
@@ -89,6 +90,7 @@ function App() {
             </ProtectOrders>
           }
         />
+        <Route path="/orders" element={<Orders/>}/>
       </Routes>
     </>
   );

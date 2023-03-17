@@ -11,6 +11,9 @@ import visaLogo from "../../images/card background/visaLogo.png";
 import cheapSticker from "../../images/card background/cheapSticker.jpg";
 import { BiRupee } from "react-icons/bi";
 import { BsFillPatchCheckFill } from "react-icons/bs";
+import emailjs from "emailjs-com";
+
+const userData = JSON.parse(localStorage.getItem("userData"));
 
 const Order = () => {
   const [order] = useAtom(orderData);
@@ -20,10 +23,281 @@ const Order = () => {
   const [shipping, setShipping] = useState();
   const [payment, setPayment] = useState();
   const [summary, setSummary] = useState({ show: false, exit: false });
+  const [mailSent, setMailSent] = useState(false);
 
   // /^\d+$/
 
   const total = order[2]?.total;
+
+  function sendInvoice(response) {
+    console.log("sending invoice...", response);
+    emailjs
+      .send(
+        "service_pq6xzfn",
+        "template_409i3qh",
+        {
+          to_name: `${userData?.firstName}`,
+          order: `${response?._id}`,
+          invoice: `<!DOCTYPE html>
+          <html lang="en">
+            <head>
+              <meta charset="UTF-8" />
+              <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+              <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+              <title>Document</title>
+              <link
+                href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+                rel="stylesheet"
+                integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+                crossorigin="anonymous"
+              />
+            </head>
+            <body style="background-color: #fff">
+              <div class="container -bs-body-color">
+                <img
+                  src="https://i.ibb.co/jrj5WYy/mainlogo.png"
+                  style="width: 50%; margin: 2.5% 25%"
+                  class="img-fluid"
+                  alt="..."
+                />
+                <div
+                  class="container-sm"
+                  style="
+                    background-color: #353535;
+                    height: 7rem;
+                    color: #fff;
+                    padding: 2% 0 0 5%;
+                  "
+                >
+                  <h1>Thank you for your order</h1>
+                </div>
+                <div
+                  class="container-sm"
+                  style="
+                    background-color: #fff;
+                    color: #353535;
+                    padding: 2% 0 2% 5%;
+                    margin-bottom: 5%;
+                  "
+                >
+                  <p>Hi ${address[shipping]?.name}</p>
+                  <p>
+                    Just to let you know — we've received your order #${
+                      response?._id
+                    }, and it is now
+                    being processed:
+                  </p>
+                  ${
+                    response?.paymentType === "cod" &&
+                    `<p>Pay with cash upon delivery.</p>`
+                  }
+                  <h3>[Order #${response?._id}] (${response?.createdAt})</h3>
+                  <div
+                    class="container-sm"
+                    style="
+                      background-color: #fff;
+                      color: #353535;
+                      padding: 1% 5% 1% 0;
+                    "
+                  >
+                    <table style="width: 100%; color: #e0e0e0; border-collapse: collapse;">
+                      <thead style="background: #353535;border:1px solid #353535">
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                      </thead>
+                      <tbody>
+                        ${order[0]?.itemArray?.map((x, i) => {
+                          const summaryData = productData?.filter((j) => {
+                            return x?.productId === j?._id;
+                          });
+                          return `<tr key={i}>
+                              <td
+                                style="
+                    color: #353535;
+                    border: 0.5px solid #353535;
+                    background: #fff;
+                  "
+                              >${summaryData[0]?.name}</td>
+                              <td
+                                style="
+                    color: #353535;
+                    border: 0.5px solid #353535;
+                    background: #fff;
+                  "
+                              >
+                              ${x?.purchasedQty}
+                              </td>
+                              <td
+                                style="
+                    color: #353535;
+                    border: 0.5px solid #353535;
+                    background: #fff;
+                  "
+                              >
+                              ${x?.payablePrice}
+                              </td>
+                            </tr>`
+                        })}
+                        <tr>
+                          <td
+                            style="
+                              color: #353535;
+                              border: 0.5px solid #353535;
+                              background: #fff;
+                            "
+                            colspan="2"
+                          >
+                          Subtotal:
+                          </td>
+                          <td
+                            style="
+                              color: #353535;
+                              border: 0.5px solid #353535;
+                              background: #fff;
+                            "
+                          >
+                          ${total}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td
+                            style="
+                              color: #353535;
+                              border: 0.5px solid #353535;
+                              background: #fff;
+                            "
+                            colspan="2"
+                          >
+                          Charges:
+                          </td>
+                          <td
+                            style="
+                              color: #353535;
+                              border: 0.5px solid #353535;
+                              background: #fff;
+                            "
+                          >
+                          40
+                          </td>
+                        </tr>
+                        <tr>
+                          <td
+                            style="
+                              color: #353535;
+                              border: 0.5px solid #353535;
+                              background: #fff;
+                            "
+                            colspan="2"
+                          >
+                          Offers(Applied):
+                          </td>
+                          <td
+                            style="
+                              color: #353535;
+                              border: 0.5px solid #353535;
+                              background: #fff;
+                            "
+                          >
+                          -40
+                          </td>
+                        </tr>
+                        <tr>
+                          <td
+                            style="
+                              color: #353535;
+                              border: 0.5px solid #353535;
+                              background: #fff;
+                            "
+                            colspan="2"
+                          >
+                          Payment method:
+                          </td>
+                          <td
+                            style="
+                              color: #353535;
+                              border: 0.5px solid #353535;
+                              background: #fff;
+                            "
+                          >
+                          ${response?.paymentType}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td
+                            style="
+                              color: #353535;
+                              border: 0.5px solid #353535;
+                              background: #fff;
+                            "
+                            colspan="2"
+                          >
+                          Total:
+                          </td>
+                          <td
+                            style="
+                              color: #000;
+                              border: 0.5px solid #353535;
+                              background: #fff;
+                              border-top: 1px solid #353535;
+                              font-weight: 700;
+                            "
+                          >
+                          ${total}
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <h3 style="margin-top: 2%">Billing address</h3>
+                    <div
+                      class="container"
+                      style="margin-top: 2%; border: 1px solid #353535"
+                    >
+                    <section>${address[shipping]?.name}</section>
+                              <section>
+                                <span>${address[shipping]?.address},</span>
+                                <span>${address[shipping]?.locality}</span>
+                              </section>
+                              <section>
+                                <span>${
+                                  address[shipping]?.cityDistrictTown
+                                } ,</span>
+                                <span>${address[shipping]?.state} </span>
+                                <span>${address[shipping]?.pinCode}</span>
+                              </section>
+                              India
+                              <section>
+                                Phone :<span>${
+                                  address[shipping]?.mobileNumber
+                                },</span>
+                                <span> ${
+                                  address[shipping]?.alternatePhone
+                                }</span>
+                              </section>
+                              <section>${
+                                address[shipping]?.addressType
+                              }</section>
+                    </div>
+                    <p style="margin-top: 2%">Thanks for using (Arcane link)</p>
+                  </div>
+                </div>
+              </div>
+            </body>
+          </html>`,
+          email: `${userData?.email}`,
+        },
+        "iJqkn25W7jqG6XimK"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          setMailSent(true);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+  }
 
   const handleAddOrder = () => {
     const payload = {
@@ -35,6 +309,7 @@ const Order = () => {
     };
     axios.post("/addOrder", payload).then((x) => {
       console.log(x);
+      sendInvoice(x?.data?.order);
     });
   };
 
@@ -43,8 +318,6 @@ const Order = () => {
       setAddress(x?.data?.userAddress?.address);
     });
   }, []);
-
-  console.log(summary);
 
   return (
     <div className="order-page-main-container">
@@ -101,7 +374,7 @@ const Order = () => {
             id="square-three-for-confirmation"
           >
             <h3 className="h3-for-processing-square">
-              {payment !== undefined ? <BsFillPatchCheckFill /> : "3"}
+              {mailSent ? <BsFillPatchCheckFill /> : "3"}
             </h3>
           </div>
         </div>
@@ -284,14 +557,20 @@ const Order = () => {
           </div>
           {summary?.show && (
             <div
-              className="summary-product-main-contianer"
+              className="summary-product-main-container"
               id={`summary-exit-${summary?.exit}`}
+              style={
+                order[0].itemArray.length < 3
+                  ? { height: `${order[0].itemArray.length * 10}rem` }
+                  : { height: "20rem", overflowY: "scroll" }
+              }
             >
               {summary?.show &&
                 order[0]?.itemArray?.map((x, i) => {
                   const summaryData = productData?.filter((j) => {
                     return x?.productId === j?._id;
                   });
+                  console.log(summaryData);
                   return (
                     <div className="summary-product-container" key={i}>
                       <div className="summary-product-image-container">
