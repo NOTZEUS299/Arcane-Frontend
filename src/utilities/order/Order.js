@@ -248,7 +248,7 @@ const Order = () => {
                         </tr>
                       </tbody>
                     </table>
-                    <h3 style="margin-top: 2%">Billing address</h3>
+                    <h3 style="margin-top: 4%">Billing address</h3>
                     <div
                       class="container"
                       style="margin-top: 2%; border: 1px solid #353535"
