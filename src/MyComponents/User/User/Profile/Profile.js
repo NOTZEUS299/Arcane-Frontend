@@ -40,7 +40,7 @@ export const Profile = () => {
   };
 
   const handleOrders = () => {
-    alert("Under Development");
+    navigate("/orders")
   };
 
   const handleFavs = () => {

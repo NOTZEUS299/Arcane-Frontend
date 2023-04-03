@@ -7,6 +7,8 @@ import { useState } from "react";
 import { Navigation } from "./MyComponents/Navigation/Navigation";
 import { useEffect } from "react";
 import mainlogo from "./images/mainlogo.png";
+import Search from "./MyComponents/Search/Search";
+import {axiosIntance as axios} from "./MyComponents/Base-Url/AxiosInstance"
 
 export const Header = () => {
   const [showNavigation, setShowNavigation] = useState(false);
@@ -17,8 +19,24 @@ export const Header = () => {
   const [mhHomeNav, setMhHomeNav] = useState(false);
   const [mhMenNav, setMhMenNav] = useState(false);
   const [mhWomenNav, setMhWomenNav] = useState(false);
+  const [searchShow, setSearchShow] = useState(false);
+  const [searchData, setSearchData] = useState({ exit: false, string: "" });
+  const [favCount, setFavCount] = useState()
+  const [cartCount, setCartCount] = useState()
 
   const path = useLocation().pathname;
+
+  const handleSearch = (e) => {
+    if (e.target.value !== "") {
+      setSearchShow(true);
+      setSearchData({ ...searchData, exit: false, string: e.target.value });
+    } else {
+      setSearchData({ ...searchData, exit: true });
+      setTimeout(() => {
+        setSearchShow(false);
+      }, 500);
+    }
+  };
 
   useEffect(() => {
     if (
@@ -82,6 +100,21 @@ export const Header = () => {
       setSignUp(false);
     }
   }, []);
+  
+  useEffect(() => {
+    axios.get("/user/getCartItems").then((x) => {
+      const data = Object.values(x.data.cartItems);
+      setCartCount(data?.length)
+    });
+      }, [])
+
+  useEffect(() => {
+    axios
+    .get("/fav/getByUser")
+    .then((x) => {
+      setFavCount(x?.data?.length)
+    })
+  }, [])
 
   return (
     <div className="mainhdr">
@@ -234,7 +267,9 @@ export const Header = () => {
                   ) : (
                     <RiHeartLine className="favheart" />
                   )}
-                  <span>rite</span>
+                  <span id="fav-link-on-header">
+                    rite {favCount !== undefined ? <div>{favCount}</div>:""}
+                  </span>
                 </div>
               </NavLink>
             </li>
@@ -245,7 +280,11 @@ export const Header = () => {
         </div>
         <div className="lstnvbrrght">
           <div className="searchbar">
-            <input type="search" placeholder="Search..." />
+            <input
+              type="search"
+              placeholder="Search..."
+              onChange={(e) => handleSearch(e)}
+            />
             <MdOutlineSearch className="searchbaricon" />
           </div>
           {signUp && (
@@ -283,7 +322,9 @@ export const Header = () => {
               to={"/cart"}
               style={{ textDecoration: "none", color: "black" }}
             >
-              <span>Cart</span>
+              <span id="cart-link-on-header">
+                Cart {cartCount !== undefined ? <div>{cartCount}</div> : ""}
+              </span>
               <span className="spntwomain">
                 <RiShoppingCartLine className="spntwo" />
               </span>
@@ -464,6 +505,11 @@ export const Header = () => {
           </div>
         </div>
       </div>
+      {searchShow && (
+        <div className="search-container">
+          <Search prop={searchData} />
+        </div>
+      )}
     </div>
   );
 };

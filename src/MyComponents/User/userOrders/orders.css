@@ -1,10 +1,234 @@
-.orders-main-container{
-    width: 100%;
-    height: 100vh;
-    background: #e0e0e0;
+.orders-main-container {
+  width: 100%;
+  background: #e0e0e0;
 }
 
-.orders-page{
-    height: 10vh;
-    box-shadow: 0 10px 20px #fff;
+.orders-page {
+  height: 10vh;
+  box-shadow: 0 10px 20px #fff;
+}
+
+.order-page-heading {
+  font-size: 2rem;
+  background: #fff;
+  margin-bottom: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 10px 10px 20px #5a5a5a, -10px -10px 20px #ffffff;
+  padding: 1rem;
+  color: #353535;
+}
+
+.orders-content-container {
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+}
+
+.orders-content-container > div:first-child {
+  width: 67.5%;
+}
+
+.orders-content-container > div:first-child > div:last-child {
+  margin: 0;
+}
+
+.orders-card-container {
+  width: 100%;
+  height: 45vh;
+  background: #fff;
+  margin-bottom: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 10px 10px 20px #5a5a5a, -10px -10px 20px #ffffff;
+  padding: 1rem;
+  position: relative;
+}
+
+.order-card-heading {
+  color: #5a5a5a;
+  display: flex;
+  justify-content: space-between;
+}
+
+.order-card-heading > div:last-child {
+  text-align: right;
+}
+
+.order-card-image-main-container {
+  width: calc(100% - 2rem);
+  height: 70%;
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  overflow-x: scroll;
+}
+
+.images-container {
+  width: 9rem;
+  margin: 0 10px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.images-container>img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.side-div-for-details {
+  width: 30%;
+  height: initial;
+  background: #fff;
+  position: sticky;
+  top: 15vh;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px #5a5a5a, -5px -5px 10px #ffffff;
+  transition: all 0.3s;
+}
+
+.order-details-heading {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  color: #353535;
+}
+
+.Tracker {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ordered,
+.packed,
+.shipped,
+.delivered {
+  width: 15%;
+  font-size: 200%;
+  text-align: center;
+  color: #2c3333;
+  border-radius: 50px;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: all 0.3s;
+}
+
+.ordered:hover,
+.packed:hover,
+.shipped:hover,
+.delivered:hover {
+  opacity: 1;
+}
+
+.order-status-bar {
+  width: 60px;
+  height: 15px;
+  position: relative;
+}
+
+.status-line {
+  width: 100%;
+  height: 100%;
+  background-color: #395b64;
+}
+
+.Green-status-line {
+  width: 100%;
+  height: 100%;
+  background-color: green;
+  position: absolute;
+  top: 0;
+  animation: update 3s ease-in-out 1 forwards;
+}
+
+.range-container-to-connect-icons{
+  width: 0.1rem;
+  height: 5rem;
+  background: #353535;
+  margin-left: 0.4rem;
+}
+
+.flex-container-to-show-check-and-date{
+  display: flex;
+  justify-content: space-between;
+}
+
+.side-div-for-details-content{
+  display: flex;
+  justify-content: space-between;
+  align-items:flex-start;
+  padding: 0 2rem 2rem;
+  animation: EntranceAniForDates 0.3s ease-in-out 1 forwards;
+  overflow: hidden;
+}
+
+.range-to-show-updated-data{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.product-details-image-container{
+  margin: 0.2rem 0;
+  width: 9rem;
+  height: 10rem;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.product-details-image-container>img{
+  width: 100%;
+}
+
+.product-details-containers{
+  width: 9rem;
+}
+
+.hovering-product-containers-to-show-details{
+  animation: EntranceAniForProduct 0.3s ease-in-out 1 forwards;
+}
+
+.flex-container-to-show-check-and-date>h5{
+  margin-left: 0.5rem;
+}
+
+/* ///////////////////////////////////////////Animations////////////////////////////////////////////////////////////////// */
+
+@keyframes update {
+  0% {
+    border-radius: 0px 50px 50px 0px;
+    width: 0;
+  }
+}
+
+@keyframes EntranceAniForDates {
+  0%{
+    opacity: 0;
+    height: 0;
+  }
+  100%{
+    opacity: 1;
+    height: 25rem;
+  }
+}
+
+@keyframes EntranceAniForProduct {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
 }

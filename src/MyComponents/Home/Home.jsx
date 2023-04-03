@@ -401,6 +401,59 @@ export const Home = () => {
             </div>
           </fieldset>
         </div>
+        <footer className="home-page-arcane-container">
+        <div className="footer">
+          <div className="contain">
+            <div className="col">
+              <h2>Company</h2>
+              <ul>
+                <li>About us</li>
+                <li> Our Mission</li>
+                <li>Services</li>
+              </ul>
+            </div>
+            <div className="col">
+              <h2>Products</h2>
+              <ul>
+                <li>SEO</li>
+                <li>Web Development</li>
+                <li>Content Development</li>
+              </ul>
+            </div>
+            <div className="col">
+              <h2>Team</h2>
+              <ul>
+                <li>Darshan Patel</li>
+                <li>Sahil Trambadiya</li>
+                <li>Content Team</li>
+              </ul>
+            </div>
+            <div className="col">
+              <h2>Resources</h2>
+              <ul>
+                <li>React.js</li>
+                <li>React Libraries</li>
+                <li>Email.js</li>
+              </ul>
+            </div>
+            <div className="col">
+              <h2>Contact</h2>
+              <ul>
+                <li>+91 99244 35861</li>
+                <li>033 2464 XXXX</li>
+                <li>drshnptl137@gmail.com</li>
+              </ul>
+            </div>
+            <div className="col address">
+              <h2>Address </h2>
+              <ul>
+                <li>Twin Towers, Service Road, Surat</li>
+              </ul>
+            </div>
+            <div className="clearfix"></div>
+          </div>
+        </div>
+      </footer>
       </div>
     </div>
   );

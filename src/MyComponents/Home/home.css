@@ -2,8 +2,7 @@
 
 .container {
     background-color: #eaeded;
-    padding-bottom: 3600px;
-    /* filter: invert(1); */
+    height: max-content;
 }
 
 .homebody {
@@ -64,7 +63,7 @@
 
 .mainimgesdiv {
     width: 100%;
-    height: 84vh;
+    height: 85vh;
 }
 
 #imgone {
@@ -134,52 +133,52 @@
 
 #imgbgone {
     background-image: linear-gradient(#071518, #eaeded, #071518);
-    padding-bottom: 3200px;
+    padding-bottom: calc(400px * 5.42);
 }
 
 #imgbgtwo {
     background-image: linear-gradient(#3f4342, #eaeded, #3f4342);
-    padding-bottom: 3200px;
+    padding-bottom: calc(400px * 5.42);
 }
 
 #imgbgthree {
     background-image: linear-gradient(#c37f02, #eaeded, #cc993b);
-    padding-bottom: 3200px;
+    padding-bottom: calc(400px * 5.42);
 }
 
 #imgbgfour {
     background-image: linear-gradient(#6a5644, #eaeded, #6a5644);
-    padding-bottom: 3200px;
+    padding-bottom: calc(400px * 5.42);
 }
 
 #imgbgfive {
     background-image: linear-gradient(#2f3032, #eaeded, #2f3032);
-    padding-bottom: 3200px;
+    padding-bottom: calc(400px * 5.42);
 }
 
 #imgbgsix {
     background-image: linear-gradient(#7c746f, #eaeded, #7c746f);
-    padding-bottom: 3200px;
+    padding-bottom: calc(400px * 5.42);
 }
 
 #imgbgseven {
     background-image: linear-gradient(#b29688, #eaeded, #b29688);
-    padding-bottom: 3200px;
+    padding-bottom: calc(400px * 5.42);
 }
 
 #imgbgeight {
     background-image: linear-gradient(#131112, #eaeded, #131112);
-    padding-bottom: 3200px;
+    padding-bottom: calc(400px * 5.42);
 }
 
 #imgbgnine {
     background-image: linear-gradient(#879391, #eaeded, #879391);
-    padding-bottom: 3200px;
+    padding-bottom: calc(400px * 5.42);
 }
 
 #imgbgten {
     background-image: linear-gradient(#818286, #eaeded, #818286);
-    padding-bottom: 3200px;
+    padding-bottom: calc(400px * 5.42);
 }
 
 .slidesCntnt {
@@ -269,7 +268,6 @@
 .this-Content-card-hover {
     width: 117%;
     height: 100%;
-    background-color: #fff;
     position: absolute;
     top: 0;
     font-weight: 900;
@@ -641,4 +639,99 @@
     position: absolute;
     left: 9.5%;
     bottom: 10%;
+}
+
+.footer {
+    width: 100%;
+    /* background: rgba(255, 255, 255, 0.3); */
+    background: rgba( 31, 38, 135, 0.37 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+  }
+  .footer .col {
+    width: 190px;
+    height: auto;
+    float: left;
+    box-sizing: border-box;
+    padding: 20px;
+  }
+  .footer .col h2 {
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+    line-height: 17px;
+    padding: 10px 0;
+    color: #e0e0e0;
+    text-transform: uppercase;
+  }
+  .footer .col ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  .footer .col ul li {
+    color: white;
+    font-size: 12px;
+    padding: 5px 0px;
+  }
+  .address ul li {
+    display: inline-block;
+    padding-right: 5px !important;
+  }
+  
+  .footer .col ul li:hover {
+    cursor: pointer;
+    color: lightgray;
+    font-weight: bold;
+  }
+  .clearfix {
+    clear: both;
+  }
+  @media only screen and (min-width: 1280px) {
+    .contain {
+      width: 1200px;
+      margin: 0 auto;
+    }
+  }
+  @media only screen and (max-width: 1139px) {
+    .contain .address {
+      width: 1000px;
+      display: block;
+    }
+    .address h2 {
+      margin: 0px;
+    }
+  }
+  @media only screen and (max-width: 950px) {
+    .footer .col {
+      width: 33%;
+    }
+    .footer .col h2 {
+      font-size: 14px;
+    }
+    .footer .col ul li {
+      font-size: 13px;
+    }
+  }
+  @media only screen and (max-width: 500px) {
+      .footer .col {
+        width: 50%;
+      }
+      .footer .col h2 {
+        font-size: 14px;
+      }
+      .footer .col ul li {
+        font-size: 13px;
+      }
+  }
+  @media only screen and (max-width: 340px) {
+    .footer .col {
+      width: 100%;
+    }
+  }
+
+.home-page-arcane-container{
+    width: 100%;
+    margin-top: 2rem;
 }

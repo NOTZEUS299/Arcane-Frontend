@@ -170,8 +170,8 @@
     height: 350px;
     border-radius: 10px;
     background: #202124;
-    box-shadow: 10px 10px 20px #0d0d0e,
-        -10px -10px 20px #33353a;
+    box-shadow: 5px 5px 10px #0d0d0e,
+        -5px -5px 10px #33353a;
     margin: 0 auto;
     display: flex;
     justify-content: center;

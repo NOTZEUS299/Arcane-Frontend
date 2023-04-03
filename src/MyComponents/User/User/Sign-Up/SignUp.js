@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Header } from "../../../../Header";
 import { axiosIntance as axios } from "../../../Base-Url/AxiosInstance";
 import "./SignUp.css";
@@ -8,9 +8,20 @@ import "./SignUp.css";
 export const SignUp = () => {
   const [userData, setUserData] = useState({});
 
+  const navigate = useNavigate()
+
   const handleOneSubmit = async () => {
     await axios.post("/signup", userData).then((x) => {
-      console.log(x);
+        localStorage.setItem("token", JSON.stringify(x.data.token));
+        localStorage.setItem("userData", JSON.stringify(x.data.user));
+        console.log(x);
+      })
+      .finally(() => {
+        navigate("/profile");
+        setTimeout(() => {
+          window.location.reload(true);
+        }, 1000);
+      ;
     });
   };
 
