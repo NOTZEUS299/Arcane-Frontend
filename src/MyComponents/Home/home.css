@@ -9,6 +9,7 @@
     background-color: #eaeded;
     position: relative;
     z-index: 0;
+    /* overflow: hidden; */
 }
 
 .advrtsbar {
@@ -134,51 +135,61 @@
 #imgbgone {
     background-image: linear-gradient(#071518, #eaeded, #071518);
     padding-bottom: calc(400px * 5.42);
+    position: relative;
 }
 
 #imgbgtwo {
     background-image: linear-gradient(#3f4342, #eaeded, #3f4342);
     padding-bottom: calc(400px * 5.42);
+    position: relative;
 }
 
 #imgbgthree {
     background-image: linear-gradient(#c37f02, #eaeded, #cc993b);
     padding-bottom: calc(400px * 5.42);
+    position: relative;
 }
 
 #imgbgfour {
     background-image: linear-gradient(#6a5644, #eaeded, #6a5644);
     padding-bottom: calc(400px * 5.42);
+    position: relative;
 }
 
 #imgbgfive {
     background-image: linear-gradient(#2f3032, #eaeded, #2f3032);
     padding-bottom: calc(400px * 5.42);
+    position: relative;
 }
 
 #imgbgsix {
     background-image: linear-gradient(#7c746f, #eaeded, #7c746f);
     padding-bottom: calc(400px * 5.42);
+    position: relative;
 }
 
 #imgbgseven {
     background-image: linear-gradient(#b29688, #eaeded, #b29688);
     padding-bottom: calc(400px * 5.42);
+    position: relative;
 }
 
 #imgbgeight {
     background-image: linear-gradient(#131112, #eaeded, #131112);
     padding-bottom: calc(400px * 5.42);
+    position: relative;
 }
 
 #imgbgnine {
     background-image: linear-gradient(#879391, #eaeded, #879391);
     padding-bottom: calc(400px * 5.42);
+    position: relative;
 }
 
 #imgbgten {
     background-image: linear-gradient(#818286, #eaeded, #818286);
     padding-bottom: calc(400px * 5.42);
+    position: relative;
 }
 
 .slidesCntnt {
@@ -734,4 +745,6 @@
 .home-page-arcane-container{
     width: 100%;
     margin-top: 2rem;
+    position: absolute;
+    bottom: 0;
 }
